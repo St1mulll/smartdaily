@@ -1257,6 +1257,13 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <div style="font-size:13px;color:rgba(255,255,255,.6);">Заповніть форму — наш менеджер зв'яжеться з вами</div>
     </div>
     
+    <!-- Success message -->
+    <div id="orderSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+      <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
+      <div style="font-size: 22px; font-weight: 800; color: #22c55e; margin-bottom: 12px;">Замовлення отримано!</div>
+      <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 68 887 4330</div>
+    </div>
+
     <form id="orderFormElement" onsubmit="submitOrder(event)">
       <!-- Model selector -->
       <div class="form-field">
@@ -1930,7 +1937,7 @@ function submitOrder(event) {
     console.log('✅ Telegram дані:', data);
     
     if (data.ok) {
-      // 🔥 Meta Pixel — Purchase event
+      // 🔥 Meta Pixel — Purchase event (до будь-якого UI)
       const price = currentProduct === 'premium' ? 899 : 499;
       if (typeof fbq === 'function') {
         fbq('track', 'Purchase', {
@@ -1944,15 +1951,20 @@ function submitOrder(event) {
 
       submitBtn.textContent = '✅ Замовлення отримано!';
       submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-      
+
+      // Показуємо success блок замість alert
+      const successDiv = document.getElementById('orderSuccess');
+      if (successDiv) successDiv.style.display = 'block';
+      document.getElementById('orderFormElement').style.display = 'none';
+
       setTimeout(() => {
         document.getElementById('orderFormElement').reset();
+        document.getElementById('orderFormElement').style.display = 'block';
+        if (successDiv) successDiv.style.display = 'none';
         submitBtn.textContent = 'Замовити зараз';
         submitBtn.style.background = '';
         submitBtn.disabled = false;
-      }, 3000);
-      
-      alert('✅ Замовлення успішно відправлено!\n\nНаш менеджер зв\'яжеться з вами найближчим часом.\n\n📞 Можете також позвонити: +380 68 887 4330');
+      }, 4000);
     } else {
       // Telegram повернув помилку - покажемо конкретну причину
       console.error('❌ Telegram API помилка:', data);
