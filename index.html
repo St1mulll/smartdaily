@@ -42,7 +42,7 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .hero { position: relative; width: 100%; height: 75vh; min-height: 75dvh; overflow: hidden; display: flex; align-items: flex-end; }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('https://static.tildacdn.com/tild3464-3864-4430-b837-336238366165/ChatGPT_Image_27__20.png') center/cover no-repeat;
+  background: url('https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp') center/cover no-repeat;
   z-index: 0;
   will-change: transform;
 }
@@ -67,233 +67,53 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
   position: relative; overflow: hidden; transition: transform .15s, box-shadow .3s;
   box-shadow: 0 8px 32px rgba(0,0,0,.2);
 }
-.hero-cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.28);
-}
+.hero-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
 .hero-cta-btn:active { transform: scale(.97); }
 .hero-cta-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); animation: shimmer 2.8s ease-in-out infinite; }
+@keyframes shimmer { 0%{left:-100%} 100%{left:200%} }
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 .slide, .review-slide, .box-hero-img, .howtobuy-img, .use-hero-img, .features-hero-img, .features-second-img {
   animation: fadeInUp 0.6s ease-out both;
 }
 .btn-arrow { width: 28px; height: 28px; background: rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
 
 /* ── TIMER ── */
-.timer-section { 
-  background: linear-gradient(135deg, #f9f7f4 0%, #fdfbf8 100%); 
-  padding: 48px 20px; 
-  position: relative; 
-  overflow: hidden; 
-}
-.timer-section::before { 
-  content: ''; 
-  position: absolute; 
-  top: 0; left: 0; right: 0; 
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  box-shadow: 0 0 20px rgba(250,100,0,.4);
-}
-.timer-section::after { 
-  content: ''; 
-  position: absolute; 
-  bottom: 0; left: 0; right: 0; 
-  height: 1px; 
-  background: linear-gradient(90deg, transparent, rgba(250,100,0,.15), transparent); 
-}
-.timer-label-top { 
-  text-align: center; 
-  font-size: 11px; 
-  font-weight: 900; 
-  letter-spacing: 3.5px; 
-  text-transform: uppercase; 
-  color: var(--orange); 
-  margin-bottom: 20px;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-.timer-label-top::before {
-  content: '🔥';
-  margin-right: 8px;
-}
-.timer-row { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 12px; 
-  margin-bottom: 20px; 
-}
-.t-block { 
-  background: linear-gradient(135deg, rgba(250,100,0,.08) 0%, rgba(250,100,0,.04) 100%);
-  border: 1.5px solid rgba(250,100,0,.18); 
-  border-radius: 16px; 
-  padding: 18px 0 14px; 
-  text-align: center; 
-  width: 100px; 
-  transition: all .3s cubic-bezier(.34,1.56,.64,1);
-  position: relative; 
-  overflow: hidden;
-}
-.t-block::before { 
-  content: ''; 
-  position: absolute; 
-  top: 0; 
-  left: 0; right: 0; 
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--orange), transparent); 
-  opacity: 0; 
-  transition: opacity .3s; 
-}
-.t-block:hover {
-  border-color: rgba(250,100,0,.35);
-  box-shadow: 0 8px 24px rgba(250,100,0,.15);
-  transform: translateY(-2px);
-}
-.t-block.tick::before { 
-  opacity: 1;
-  animation: pulse-line 1.5s ease-in-out infinite;
-}
-@keyframes pulse-line {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-.t-block.tick { 
-  border-color: rgba(250,100,0,.4);
-  box-shadow: 0 8px 32px rgba(250,100,0,.2);
-}
-.t-num { 
-  font-family: 'Bebas Neue', sans-serif; 
-  font-size: 48px; 
-  color: var(--text); 
-  line-height: 1; 
-  transition: all .2s; 
-  display: block; 
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-.t-block.tick .t-num { 
-  color: var(--orange);
-  animation: pulse-num 1s ease-in-out infinite;
-}
-@keyframes pulse-num {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-.t-unit { 
-  font-size: 10px; 
-  font-weight: 800; 
-  letter-spacing: 1.5px; 
-  text-transform: uppercase; 
-  color: #999; 
-  display: block; 
-  margin-top: 6px;
-}
-.t-colon { 
-  font-family: 'Bebas Neue', sans-serif; 
-  font-size: 40px; 
-  color: rgba(250,100,0,.5); 
-  padding-bottom: 14px; 
-  animation: cblink 1s step-end infinite;
-  font-weight: 700;
-}
+.timer-section { background: linear-gradient(135deg, #f9f7f4 0%, #fdfbf8 100%); padding: 48px 20px; position: relative; overflow: hidden; }
+.timer-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); box-shadow: 0 0 20px rgba(250,100,0,.4); }
+.timer-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(250,100,0,.15), transparent); }
+.timer-label-top { text-align: center; font-size: 11px; font-weight: 900; letter-spacing: 3.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; position: relative; display: inline-block; width: 100%; }
+.timer-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+.t-block { background: linear-gradient(135deg, rgba(250,100,0,.08) 0%, rgba(250,100,0,.04) 100%); border: 1.5px solid rgba(250,100,0,.18); border-radius: 16px; padding: 18px 0 14px; text-align: center; width: 100px; transition: all .3s cubic-bezier(.34,1.56,.64,1); position: relative; overflow: hidden; }
+.t-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); opacity: 0; transition: opacity .3s; }
+.t-block:hover { border-color: rgba(250,100,0,.35); box-shadow: 0 8px 24px rgba(250,100,0,.15); transform: translateY(-2px); }
+.t-block.tick::before { opacity: 1; animation: pulse-line 1.5s ease-in-out infinite; }
+@keyframes pulse-line { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.t-block.tick { border-color: rgba(250,100,0,.4); box-shadow: 0 8px 32px rgba(250,100,0,.2); }
+.t-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--text); line-height: 1; transition: all .2s; display: block; letter-spacing: 2px; font-weight: 700; }
+.t-block.tick .t-num { color: var(--orange); animation: pulse-num 1s ease-in-out infinite; }
+@keyframes pulse-num { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.t-unit { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #999; display: block; margin-top: 6px; }
+.t-colon { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: rgba(250,100,0,.5); padding-bottom: 14px; animation: cblink 1s step-end infinite; font-weight: 700; }
 @keyframes cblink { 0%,100%{opacity:1} 50%{opacity:.2} }
-.timer-progress-wrap { 
-  background: linear-gradient(90deg, rgba(250,100,0,.06), rgba(250,100,0,.12), rgba(250,100,0,.06));
-  border-radius: 100px; 
-  height: 4px; 
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
-}
-.timer-progress-bar { 
-  height: 100%; 
-  background: linear-gradient(90deg, var(--orange), #ffaa00, var(--orange));
-  border-radius: 100px; 
-  width: 100%; 
-  transition: width 1s linear;
-  box-shadow: 0 0 12px rgba(250,100,0,.5);
-}
+.timer-progress-wrap { background: linear-gradient(90deg, rgba(250,100,0,.06), rgba(250,100,0,.12), rgba(250,100,0,.06)); border-radius: 100px; height: 4px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.05); }
+.timer-progress-bar { height: 100%; background: linear-gradient(90deg, var(--orange), #ffaa00, var(--orange)); border-radius: 100px; width: 100%; transition: width 1s linear; box-shadow: 0 0 12px rgba(250,100,0,.5); }
 
 /* ── FAQ ── */
-.faq-section {
-  background: var(--light2);
-  padding: 48px 20px;
-}
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.faq-item {
-  border: 2px solid rgba(250,100,0,.1);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all .3s;
-}
-.faq-item.open {
-  border-color: var(--orange);
-  box-shadow: 0 8px 24px rgba(250,100,0,.15);
-}
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px;
-  background: rgba(250,100,0,.02);
-  cursor: pointer;
-  user-select: none;
-  font-weight: 600;
-  color: var(--text);
-  transition: all .3s;
-}
-.faq-item.open .faq-question {
-  background: rgba(250,100,0,.08);
-  color: var(--orange);
-}
-.faq-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: rgba(250,100,0,.1);
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--orange);
-  transition: transform .3s;
-  flex-shrink: 0;
-}
-.faq-item.open .faq-icon {
-  transform: rotate(45deg);
-  background: rgba(250,100,0,.15);
-}
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: all .3s;
-  background: #fff;
-}
-.faq-item.open .faq-answer {
-  max-height: 200px;
-  padding: 0 20px 20px;
-}
-.faq-answer p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.6;
-}
+.faq-section { background: var(--light2); padding: 48px 20px; }
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item { border: 2px solid rgba(250,100,0,.1); border-radius: 14px; overflow: hidden; transition: all .3s; }
+.faq-item.open { border-color: var(--orange); box-shadow: 0 8px 24px rgba(250,100,0,.15); }
+.faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; background: rgba(250,100,0,.02); cursor: pointer; user-select: none; font-weight: 600; color: var(--text); transition: all .3s; }
+.faq-item.open .faq-question { background: rgba(250,100,0,.08); color: var(--orange); }
+.faq-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgba(250,100,0,.1); border-radius: 8px; font-size: 18px; font-weight: bold; color: var(--orange); transition: transform .3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(250,100,0,.15); }
+.faq-answer { max-height: 0; overflow: hidden; transition: all .3s; background: #fff; }
+.faq-item.open .faq-answer { max-height: 200px; padding: 0 20px 20px; }
+.faq-answer p { font-size: 14px; color: #666; line-height: 1.6; }
+
 .price-section { background: var(--light2); padding: 12px 20px; }
 .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
 .price-card { background: var(--light); border-radius: 20px; padding: 24px 20px; border: 1px solid rgba(250,100,0,.12); position: relative; overflow: hidden; }
@@ -308,175 +128,28 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .price-include-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #444; }
 .check-icon { width: 22px; height: 22px; background: rgba(250,100,0,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; }
 .price-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: var(--orange); color: #fff; font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 18px 24px; border-radius: 14px; border: none; cursor: pointer; position: relative; overflow: hidden; transition: transform .15s, box-shadow .3s; box-shadow: 0 6px 24px rgba(0,0,0,.2); }
-.price-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(0,0,0,.28);
-}
+.price-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,.28); }
 .price-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); animation: shimmer 2.8s ease-in-out infinite; }
 .price-btn:active { transform: scale(.97); }
 .stock-warn { text-align: center; font-size: 12px; color: #999; font-weight: 600; margin-top: 12px; }
 .stock-warn strong { color: var(--orange); }
 
 /* ── GUARANTEE ── */
-.guarantee-section {
-  background: linear-gradient(135deg, var(--light) 0%, #fdfbf8 100%);
-  padding: 48px 20px;
-  position: relative;
-  overflow: hidden;
-}
-.guarantee-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(250,100,0,.05) 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-}
-.guarantee-content {
-  position: relative;
-  z-index: 2;
-  max-width: 100%;
-  text-align: center;
-  animation: slideUp 0.8s ease-out;
-}
-.guarantee-badge {
-  display: inline-block;
-  background: rgba(250,100,0,.1);
-  border: 2px solid var(--orange);
-  color: var(--orange);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.guarantee-items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
-@media (max-width: 640px) {
-  .guarantee-items {
-    grid-template-columns: 1fr;
-  }
-}
-.guarantee-item {
-  background: #fff;
-  border: 2px solid rgba(250,100,0,.15);
-  border-radius: 14px;
-  padding: 20px 16px;
-  transition: all .3s;
-  cursor: pointer;
-}
-.guarantee-item:hover {
-  border-color: var(--orange);
-  box-shadow: 0 8px 24px rgba(250,100,0,.15);
-  transform: translateY(-4px);
-}
-.guarantee-item-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-  display: block;
-}
-.guarantee-item-text strong {
-  display: block;
-  color: var(--text);
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-.guarantee-item-text span {
-  display: block;
-  color: #999;
-  font-size: 12px;
-}
-.counter-section {
-  background: linear-gradient(135deg, var(--orange) 0%, #ff7a1a 100%);
-  padding: 48px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.counter-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: float 20s linear infinite;
-}
-@keyframes float {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
-}
-.counter-content {
-  position: relative;
-  z-index: 2;
-  animation: slideUp 0.8s ease-out;
-}
-.counter-label {
-  font-size: 14px;
-  color: rgba(255,255,255,.8);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.counter-number {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  color: #fff;
-  font-weight: 900;
-  letter-spacing: -1px;
-  margin-bottom: 8px;
-  text-shadow: 0 4px 12px rgba(0,0,0,.2);
-  animation: countUp 2s ease-out;
-}
-@keyframes countUp {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
-}
-.counter-subtext {
-  font-size: 14px;
-  color: rgba(255,255,255,.75);
-  margin-bottom: 32px;
-  font-weight: 500;
-}
-.counter-items {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.counter-item {
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(10px);
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.2);
-  font-size: 12px;
-  color: #fff;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all .3s;
-}
-.counter-item:hover {
-  background: rgba(255,255,255,.2);
-  transform: translateY(-2px);
-}
-.counter-icon {
-  font-size: 16px;
-}
+.guarantee-section { background: linear-gradient(135deg, var(--light) 0%, #fdfbf8 100%); padding: 48px 20px; position: relative; overflow: hidden; }
+.guarantee-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+@media (max-width: 640px) { .guarantee-items { grid-template-columns: 1fr; } }
+.guarantee-item { background: #fff; border: 2px solid rgba(250,100,0,.15); border-radius: 14px; padding: 20px 16px; transition: all .3s; cursor: pointer; }
+.guarantee-item:hover { border-color: var(--orange); box-shadow: 0 8px 24px rgba(250,100,0,.15); transform: translateY(-4px); }
+
+.counter-section { background: linear-gradient(135deg, var(--orange) 0%, #ff7a1a 100%); padding: 48px 20px; text-align: center; position: relative; overflow: hidden; }
+.counter-content { position: relative; z-index: 2; animation: slideUp 0.8s ease-out; }
+.counter-label { font-size: 14px; color: rgba(255,255,255,.8); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.counter-number { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: #fff; font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; text-shadow: 0 4px 12px rgba(0,0,0,.2); }
+.counter-subtext { font-size: 14px; color: rgba(255,255,255,.75); margin-bottom: 32px; font-weight: 500; }
+.counter-items { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.counter-item { background: rgba(255,255,255,.15); backdrop-filter: blur(10px); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); font-size: 12px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all .3s; }
+.counter-item:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
 .gallery-section { background: var(--light2); padding: 40px 20px; }
 .section-title-light { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--text); letter-spacing: 1px; margin-bottom: 6px; }
 .section-title-light span { color: var(--orange); }
@@ -500,411 +173,61 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .section-title-dark { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--text); letter-spacing: 1px; line-height: 1.1; margin-bottom: 6px; }
 .section-title-dark span { color: var(--orange); }
 .section-sub-dark { font-size: 13px; color: #666; font-weight: 500; margin-bottom: 28px; }
-.video-wrap {
-  position: relative; border-radius: 20px; overflow: hidden; background: #000;
-  border: 1px solid rgba(250,100,0,.25); box-shadow: 0 8px 40px rgba(0,0,0,.7);
-  margin-top: 24px;
-  /* мобільна версія вертикального відео */
-  aspect-ratio: 9/16;
-}
-.video-wrap video { 
-  position: absolute; top: 50%; left: 50%; 
-  transform: translate(-50%, -50%);
-  width: 100%; height: 100%; 
-  border: none; display: block;
-  object-fit: cover;
-}
+.video-wrap { position: relative; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(250,100,0,.25); box-shadow: 0 8px 40px rgba(0,0,0,.7); margin-top: 24px; aspect-ratio: 9/16; }
+.video-wrap video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; border: none; display: block; object-fit: cover; }
 .video-badge { position: absolute; top: 14px; left: 14px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 2; }
 
 /* ── FEATURES ── */
 .features-section { background: var(--dark); padding: 0 20px; position: relative; overflow: hidden; }
 .features-section .blob { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(250,100,0,.12) 0%, transparent 70%); bottom: 40px; right: -60px; pointer-events: none; z-index: 1; }
-.features-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; }
-.features-second-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; }
 
 /* ── FORM ── */
-.form-section { 
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  padding: 48px 20px 60px; 
-  position: relative; 
-  overflow: hidden;
-}
-.form-section::before { 
-  content: ''; 
-  position: absolute; 
-  top: 0; left: 0; right: 0; 
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  box-shadow: 0 0 20px rgba(250,100,0,.4);
-}
-.form-glow {
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(250,100,0,.05) 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-}
-.form-field { 
-  margin-bottom: 20px;
-}
-.form-label { 
-  display: block; 
-  color: rgba(255,255,255,.7); 
-  font-size: 13px; 
-  font-weight: 700; 
-  letter-spacing: .5px; 
-  text-transform: uppercase; 
-  margin-bottom: 8px;
-}
-.form-input { 
-  width: 100%; 
-  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1.5px solid rgba(255,255,255,.12); 
-  border-radius: 14px; 
-  padding: 16px 18px; 
-  font-family: 'Manrope', sans-serif; 
-  font-size: 15px; 
-  font-weight: 600; 
-  color: #fff; 
-  outline: none; 
-  transition: all .3s cubic-bezier(.34,1.56,.64,1);
-  -webkit-appearance: none; 
-  appearance: none;
-  backdrop-filter: blur(10px);
-}
-.form-input::placeholder { 
-  color: rgba(255,255,255,.3);
-}
-.form-input:focus { 
-  border-color: var(--orange); 
-  background: linear-gradient(135deg, rgba(250,100,0,.15), rgba(250,100,0,.08));
-  box-shadow: 0 0 20px rgba(250,100,0,.2);
-}
-.form-submit { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 10px; 
-  width: 100%; 
-  background: linear-gradient(135deg, var(--orange) 0%, #ff7a1a 100%);
-  color: #fff; 
-  font-family: 'Manrope', sans-serif; 
-  font-size: 17px; 
-  font-weight: 800; 
-  text-transform: uppercase; 
-  letter-spacing: .5px; 
-  padding: 20px 24px; 
-  border-radius: 16px; 
-  border: 2px solid transparent;
-  cursor: pointer; 
-  position: relative; 
-  overflow: hidden; 
-  transition: all .3s cubic-bezier(.34,1.56,.64,1);
-  box-shadow: 0 12px 40px rgba(250,100,0,.6);
-  margin-top: 8px;
-}
-.form-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 48px rgba(250,100,0,.75);
-  border-color: rgba(255,255,255,.2);
-}
-.form-submit:active { 
-  transform: scale(.97);
-}
-.form-submit::before { 
-  content: ''; 
-  position: absolute; 
-  top: 0; 
-  left: -100%; 
-  width: 60%; 
-  height: 100%; 
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent); 
-  animation: shimmer 2.8s ease-in-out infinite;
-}
-.form-trust {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-.trust-item {
-  font-size: 12px;
-  color: rgba(255,255,255,.5);
-  font-weight: 600;
-}
-.specs-section { background: var(--light); padding: 40px 20px; }
-.spec-list { display: flex; flex-direction: column; gap: 1px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,.07); background: rgba(0,0,0,.03); }
-.spec-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: var(--light2); gap: 12px; }
-.spec-name { font-size: 13px; font-weight: 600; color: #888; }
-.spec-val { font-size: 13px; font-weight: 800; color: var(--text); text-align: right; }
-.spec-val.highlight { color: var(--orange); }
-
-/* ── REVIEWS CAROUSEL ── */
-.reviews-section { background: var(--light2); padding: 40px 20px; }
-.reviews-intro { font-size: 14px; color: #666; line-height: 1.6; margin: 16px 0 24px; }
-.reviews-intro strong { color: var(--orange); }
-.stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; margin-bottom: 4px; }
-
-/* ── REVIEWS STACKED CARDS ── */
-.reviews-section {
-  background: #fff;
-  padding: 48px 20px 56px;
-  text-align: center;
-  position: relative;
-}
-.reviews-stack-wrap {
-  position: relative;
-  width: 300px;
-  height: 420px;
-  margin: 32px auto 0;
-}
-.reviews-stack-wrap::before,
-.reviews-stack-wrap::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  background: #fff;
-  border-radius: 28px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-}
-.reviews-stack-wrap::before {
-  width: 88%;
-  height: 96%;
-  top: 10px;
-  transform: translateX(-50%) rotate(3deg);
-  z-index: 1;
-  opacity: .7;
-}
-.reviews-stack-wrap::after {
-  width: 82%;
-  height: 94%;
-  top: 18px;
-  transform: translateX(-50%) rotate(6deg);
-  z-index: 0;
-  opacity: .45;
-}
-.review-stack-card {
-  position: absolute;
-  inset: 0;
-  background: #fff;
-  border-radius: 28px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.12);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  padding: 28px 28px 24px;
-  text-align: left;
-  transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s;
-  overflow: hidden;
-}
-.review-stack-card.exiting {
-  transform: translateX(-130%) rotate(-8deg) !important;
-  opacity: 0;
-  transition: transform .35s ease-in, opacity .25s !important;
-}
-.review-progress-bar {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-.review-progress-seg {
-  flex: 1;
-  height: 3px;
-  border-radius: 100px;
-  background: #e0e0e0;
-  transition: background .3s;
-}
-.review-progress-seg.done,
-.review-progress-seg.active { background: #222; }
-.review-card-close {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: #999;
-  cursor: pointer;
-  border: none;
-}
-.review-card-num {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #bbb;
-  margin-bottom: 16px;
-}
-.review-card-img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 14px;
-}
-.review-card-stars {
-  color: #f59e0b;
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-.review-card-text {
-  font-size: 14px;
-  color: #222;
-  line-height: 1.7;
-  font-weight: 500;
-  flex: 1;
-}
-.review-card-name {
-  font-size: 12px;
-  font-weight: 800;
-  color: #888;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid #f0f0f0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.review-stack-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 300px;
-  margin: 20px auto 0;
-}
-.review-nav-back {
-  background: none;
-  border: none;
-  font-size: 15px;
-  font-weight: 700;
-  color: #888;
-  cursor: pointer;
-  padding: 10px 0;
-  font-family: 'Manrope', sans-serif;
-}
-.review-nav-next {
-  background: var(--orange);
-  color: #fff;
-  border: none;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 800;
-  padding: 13px 36px;
-  cursor: pointer;
-  transition: transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,.15);
-  font-family: 'Manrope', sans-serif;
-}
-.review-nav-next:hover { transform: translateY(-1px); }
-
-/* old 3d wrap — hide */
-.reviews-3d-wrap, .reviews-3d-track, .review-3d-card, .rev-dots { display: none !important; }
-
-.rev-dots { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
-.rev-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,.12); transition: background .3s, transform .3s; cursor: pointer; }
-.rev-dot.active { background: var(--orange); transform: scale(1.4); }
-.review-3d-name {
-  font-size: 13px;
-  font-weight: 800;
-  color: #111;
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.review-3d-name::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e0e0e0, #bbb);
-  flex-shrink: 0;
-  background-size: cover;
-}
-
-/* ── USE CASES ── */
-.use-section { background: #fff; padding: 40px 20px; position: relative; }
-.use-section .blob2 { position: absolute; width: 260px; height: 260px; background: radial-gradient(circle, rgba(250,100,0,.1) 0%, transparent 70%); bottom: -60px; left: -60px; pointer-events: none; z-index: 1; }
-.use-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; }
-
-/* ── BOX ── */
-.box-section { background: #fff; padding: 40px 20px; }
-.box-hero-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; }
-
-/* ── HOW TO BUY ── */
-.howtobuy-section { background: var(--light2); padding: 40px 20px; }
-.howtobuy-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; margin-bottom: 0; }
-
-/* ── ORDER FORM ── */
-.form-section { 
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  padding: 44px 20px 60px; 
-  position: relative; 
-  overflow: hidden;
-}
-.form-section::before { 
-  content: ''; 
-  position: absolute; 
-  top: 0; left: 0; right: 0; 
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  box-shadow: 0 0 20px rgba(250,100,0,.4);
-}
+.form-section { background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%); padding: 48px 20px 60px; position: relative; overflow: hidden; }
+.form-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); box-shadow: 0 0 20px rgba(250,100,0,.4); }
 .form-glow { position: absolute; width: 360px; height: 360px; background: radial-gradient(circle, rgba(250,100,0,.12) 0%, transparent 70%); top: -80px; left: 50%; transform: translateX(-50%); pointer-events: none; }
-.form-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: #fff; letter-spacing: 1px; line-height: 1.05; margin-bottom: 8px; text-align: center; position: relative; z-index: 1; }
-.form-title span { color: var(--orange); }
-.form-sub { font-size: 14px; color: rgba(255,255,255,.45); font-weight: 500; margin-bottom: 20px; text-align: center; position: relative; z-index: 1; line-height: 1.55; }
-.price-row-form { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; position: relative; z-index: 1; flex-wrap: wrap; }
-.form-old-price { font-size: 22px; color: rgba(255,255,255,.3); text-decoration: line-through; font-weight: 700; }
-.form-new-price { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: var(--orange); letter-spacing: 2px; line-height: 1; }
-.form-saving-badge { background: rgba(250,100,0,.15); border: 1px solid rgba(250,100,0,.3); color: var(--orange); font-size: 12px; font-weight: 800; padding: 7px 16px; border-radius: 100px; display: inline-block; margin-bottom: 12px; position: relative; z-index: 1; }
-.form-order-note { font-size: 12px; color: rgba(255,255,255,.5); text-align: center; margin-bottom: 20px; position: relative; z-index: 1; font-weight: 600; }
-.order-form { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
-.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .form-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.35); }
-.form-input { 
-  width: 100%; 
-  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  border: 1.5px solid rgba(255,255,255,.12); 
-  border-radius: 14px; 
-  padding: 16px 18px; 
-  font-family: 'Manrope', sans-serif; 
-  font-size: 15px; 
-  font-weight: 600; 
-  color: #fff; 
-  outline: none; 
-  transition: all .3s cubic-bezier(.34,1.56,.64,1);
-  -webkit-appearance: none; 
-  appearance: none;
-  backdrop-filter: blur(10px);
-}
-.form-input::placeholder { 
-  color: rgba(255,255,255,.3);
-}
-.form-input:focus { 
-  border-color: var(--orange); 
-  background: linear-gradient(135deg, rgba(250,100,0,.15), rgba(250,100,0,.08));
-  box-shadow: 0 0 20px rgba(250,100,0,.2);
-}
+.form-input { width: 100%; background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1.5px solid rgba(255,255,255,.12); border-radius: 14px; padding: 16px 18px; font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 600; color: #fff; outline: none; transition: all .3s cubic-bezier(.34,1.56,.64,1); -webkit-appearance: none; appearance: none; backdrop-filter: blur(10px); }
+.form-input::placeholder { color: rgba(255,255,255,.3); }
+.form-input:focus { border-color: var(--orange); background: linear-gradient(135deg, rgba(250,100,0,.15), rgba(250,100,0,.08)); box-shadow: 0 0 20px rgba(250,100,0,.2); }
 .form-submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: var(--orange); color: #fff; font-family: 'Manrope', sans-serif; font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 20px 24px; border-radius: 16px; border: none; cursor: pointer; position: relative; overflow: hidden; transition: transform .15s, box-shadow .3s; box-shadow: 0 8px 32px rgba(0,0,0,.2); margin-top: 4px; }
-.form-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.28);
-}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
 .form-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); animation: shimmer 2.8s ease-in-out infinite; }
 .form-submit:active { transform: scale(.97); }
 .form-trust { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
 .trust-item { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.25); }
+
+.specs-section { background: var(--light); padding: 40px 20px; }
+.use-section { background: #fff; padding: 40px 20px; position: relative; }
+.use-section .blob2 { position: absolute; width: 260px; height: 260px; background: radial-gradient(circle, rgba(250,100,0,.1) 0%, transparent 70%); bottom: -60px; left: -60px; pointer-events: none; z-index: 1; }
+.use-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; }
+.box-section { background: #fff; padding: 40px 20px; }
+.box-hero-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; }
+.howtobuy-section { background: var(--light2); padding: 40px 20px; }
+.howtobuy-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; margin-bottom: 0; }
+
+/* ── REVIEWS ── */
+.reviews-section { background: #fff; padding: 48px 20px 56px; text-align: center; position: relative; }
+.reviews-stack-wrap { position: relative; width: 300px; height: 420px; margin: 32px auto 0; }
+.reviews-stack-wrap::before, .reviews-stack-wrap::after { content: ''; position: absolute; left: 50%; background: #fff; border-radius: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+.reviews-stack-wrap::before { width: 88%; height: 96%; top: 10px; transform: translateX(-50%) rotate(3deg); z-index: 1; opacity: .7; }
+.reviews-stack-wrap::after { width: 82%; height: 94%; top: 18px; transform: translateX(-50%) rotate(6deg); z-index: 0; opacity: .45; }
+.review-stack-card { position: absolute; inset: 0; background: #fff; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,0,0,.12); z-index: 10; display: flex; flex-direction: column; padding: 28px 28px 24px; text-align: left; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s; overflow: hidden; }
+.review-stack-card.exiting { transform: translateX(-130%) rotate(-8deg) !important; opacity: 0; transition: transform .35s ease-in, opacity .25s !important; }
+.review-progress-bar { display: flex; gap: 6px; margin-bottom: 20px; }
+.review-progress-seg { flex: 1; height: 3px; border-radius: 100px; background: #e0e0e0; transition: background .3s; }
+.review-progress-seg.done, .review-progress-seg.active { background: #222; }
+.review-card-close { position: absolute; top: 22px; right: 22px; width: 28px; height: 28px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #999; cursor: pointer; border: none; }
+.review-card-num { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; margin-bottom: 16px; }
+.review-card-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 14px; }
+.review-card-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+.review-card-text { font-size: 14px; color: #222; line-height: 1.7; font-weight: 500; flex: 1; }
+.review-card-name { font-size: 12px; font-weight: 800; color: #888; margin-top: 16px; padding-top: 14px; border-top: 1px solid #f0f0f0; text-transform: uppercase; letter-spacing: 1px; }
+.review-stack-nav { display: flex; align-items: center; justify-content: space-between; width: 300px; margin: 20px auto 0; }
+.review-nav-back { background: none; border: none; font-size: 15px; font-weight: 700; color: #888; cursor: pointer; padding: 10px 0; font-family: 'Manrope', sans-serif; }
+.review-nav-next { background: var(--orange); color: #fff; border: none; border-radius: 100px; font-size: 15px; font-weight: 800; padding: 13px 36px; cursor: pointer; transition: transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-family: 'Manrope', sans-serif; }
+.review-nav-next:hover { transform: translateY(-1px); }
+.reviews-3d-wrap, .reviews-3d-track, .review-3d-card, .rev-dots { display: none !important; }
 
 /* ── FOOTER ── */
 footer { background: #080808; padding: 32px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,.05); }
@@ -924,37 +247,19 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 .sticky-price-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--orange); line-height: 1; }
 .sticky-price-sub { font-size: 10px; color: rgba(255,255,255,.3); font-weight: 600; }
 .sticky-btn { flex: 1; background: var(--orange); color: #fff; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 14px; border-radius: 12px; border: none; cursor: pointer; text-align: center; display: block; position: relative; overflow: hidden; transition: transform .2s, box-shadow .3s; }
-.sticky-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-}
 .sticky-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); animation: shimmer 2.8s ease-in-out 1s infinite; }
 
-/* ── CONVERSION TOAST ── */
-.conv-toast {
-  position: fixed; bottom: 50%; left: 20px; transform: translateY(50%);
-  background: #fff; border-radius: 14px; padding: 16px 20px;
-  display: flex; align-items: center; gap: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.25); z-index: 200;
-  max-width: 280px; border-left: 4px solid var(--orange);
-  opacity: 0; transition: opacity .5s cubic-bezier(.34,1.56,.64,1);
-  pointer-events: none;
-}
-.conv-toast.show { 
-  opacity: 1;
-  pointer-events: auto;
-}
+/* ── CONV TOAST ── */
+.conv-toast { position: fixed; bottom: 50%; left: 20px; transform: translateY(50%); background: #fff; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 32px rgba(0,0,0,.25); z-index: 200; max-width: 280px; border-left: 4px solid var(--orange); opacity: 0; transition: opacity .5s cubic-bezier(.34,1.56,.64,1); pointer-events: none; }
+.conv-toast.show { opacity: 1; pointer-events: auto; }
 .conv-toast-icon { font-size: 26px; flex-shrink: 0; }
 .conv-toast-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.4; }
 .conv-toast-text strong { color: var(--orange); }
-
-/* validation */
 .field-error { border-color: #ef4444 !important; }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ PRODUCT SELECTOR ═══════════ -->
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -963,7 +268,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <!-- ═══════════ HERO CTA ═══════════ -->
 <section style="background:var(--light);padding:20px;">
   <button class="hero-cta-btn" onclick="scrollToForm()">
-    Купити зі знижкою — 799 грн
+    Купити зі знижкою — 899 грн
     <span class="btn-arrow">→</span>
   </button>
 </section>
@@ -986,11 +291,10 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   <div style="max-width: 100%; text-align: center; margin-bottom: 24px;">
     <div style="font-size: 12px; color: #999; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Виберіть модель</div>
   </div>
-  
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 600px; margin: 0 auto;">
     <!-- CHEAP OPTION -->
     <button onclick="switchProduct('cheap')" id="cardCheap" style="all: unset; cursor: pointer; padding: 0;">
-      <div style="background: #fff; border: 2px solid #2196F3; border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center;">
+      <div style="background: #fff; border: 2px solid rgba(0,0,0,.1); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center;">
         <img src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782580496/7268650035_w640_h640_turisticheskij-dush-ot_rhtehr.webp" alt="Бюджет" style="width: 100%; height: 160px; object-fit: cover; display: block;">
         <div style="padding: 12px 10px 14px;">
           <div style="font-weight: 800; font-size: 15px; color: #2196F3; margin-bottom: 4px;">Base</div>
@@ -1041,18 +345,10 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   <div class="section-sub-light">Саме те, що ти отримаєш</div>
   <div class="slider-wrap" id="sliderWrap">
     <div class="slider-track" id="sliderTrack">
-      <div class="slide">
-        <img data-gallery-image="0" src="https://static.tildacdn.com/tild6437-6365-4132-a635-333132386265/7054599232_w640_h640.webp" alt="Фото 1" loading="eager">
-      </div>
-      <div class="slide">
-        <img data-gallery-image="1" src="https://static.tildacdn.com/tild3566-3462-4131-b664-373736653935/6725366179_w640_h640.jpg" alt="Фото 2" loading="lazy">
-      </div>
-      <div class="slide">
-        <img data-gallery-image="2" src="https://static.tildacdn.com/tild6536-3465-4338-b366-643137633935/6152750054_w640_h204.jpg" alt="Фото 3" loading="lazy">
-      </div>
-      <div class="slide">
-        <img data-gallery-image="3" src="https://static.tildacdn.com/tild3363-6465-4931-b262-656433626161/6381707055_w640_h204.jpeg" alt="Фото 4" loading="lazy">
-      </div>
+      <div class="slide"><img data-gallery-image="0" src="https://static.tildacdn.com/tild6437-6365-4132-a635-333132386265/7054599232_w640_h640.webp" alt="Фото 1" loading="eager"></div>
+      <div class="slide"><img data-gallery-image="1" src="https://static.tildacdn.com/tild3566-3462-4131-b664-373736653935/6725366179_w640_h640.jpg" alt="Фото 2" loading="lazy"></div>
+      <div class="slide"><img data-gallery-image="2" src="https://static.tildacdn.com/tild6536-3465-4338-b366-643137633935/6152750054_w640_h204.jpg" alt="Фото 3" loading="lazy"></div>
+      <div class="slide"><img data-gallery-image="3" src="https://static.tildacdn.com/tild3363-6465-4931-b262-656433626161/6381707055_w640_h204.jpeg" alt="Фото 4" loading="lazy"></div>
     </div>
     <div class="slider-controls">
       <button class="slider-btn" id="prevBtn" aria-label="Назад">‹</button>
@@ -1074,7 +370,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     <video
       id="videoPlayer"
       data-product-video
-      src="https://res.cloudinary.com/dcqxvj3dv/video/upload/v1777254638/1777253157199553_1_bhnlpt.mp4"
+      src="https://res.cloudinary.com/dyb7dyrme/video/upload/v1782869288/%D1%82%D1%82%D1%82_xmnfpu.mp4"
       muted
       loop
       playsinline
@@ -1084,9 +380,9 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 
   <div style="margin-top:36px;position:relative;z-index:1;">
     <div class="section-eyebrow" style="color:var(--orange);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;">Переваги</div>
-    
+
     <div style="margin-bottom:28px;">
-      <img data-feature-image src="https://static.tildacdn.com/tild3263-3765-4066-a333-623564396435/ChatGPT_Image_27__20.png" alt="Перевага 1" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
+      <img data-feature-image src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/2_mujevl.jpg" alt="Перевага 1" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
     </div>
 
     <div style="background:rgba(33,150,243,.06);border:2px solid rgba(33,150,243,.25);border-radius:16px;padding:24px 20px;text-align:center;margin-bottom:28px;box-shadow:0 8px 32px rgba(33,150,243,.15);">
@@ -1096,14 +392,12 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
         <span style="width:24px;height:24px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">→</span>
       </button>
     </div>
-    
+
     <div style="margin-bottom:0;">
-      <img data-feature-image src="https://static.tildacdn.com/tild3731-3462-4235-b237-396264663336/ChatGPT_Image_27__20.png" alt="Перевага 2" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
+      <img data-feature-image src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/3_lw3cxw.webp" alt="Перевага 2" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
     </div>
   </div>
 </section>
-
-
 
 <!-- ═══════════ SPECS ═══════════ -->
 <section class="specs-section">
@@ -1119,32 +413,98 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <section class="use-section">
   <div class="blob2"></div>
   <img class="use-hero-img" data-usecase
-    src="https://static.tildacdn.com/tild3966-3261-4134-a162-646630623564/ChatGPT_Image_27__20.png"
+    src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/4_ykmtfp.webp"
     alt="Де використовувати" loading="lazy">
 </section>
 
 <!-- ═══════════ BOX ═══════════ -->
 <section class="box-section">
   <img class="box-hero-img" data-box
-    src="https://static.tildacdn.com/tild3536-3666-4539-b666-616162346231/ChatGPT_Image_27__20.png"
+    src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/5_hyqcon.webp"
     alt="Комплектація" loading="lazy" style="opacity:0;">
 </section>
 
 <!-- ═══════════ ЯК КУПИТИ ═══════════ -->
 <section class="howtobuy-section">
   <img class="howtobuy-img" data-howtobuy
-    src="https://static.tildacdn.com/tild3135-6431-4936-a335-666162353635/ChatGPT_Image_27__20.png"
+    src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/6_ixa3bf.webp"
     alt="Як купити" loading="lazy" style="opacity:0;">
+</section>
+
+<!-- ═══════════ ORDER FORM ═══════════ -->
+<section class="form-section" id="orderForm">
+  <div class="form-glow"></div>
+  <div style="position:relative;z-index:2;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <div class="section-eyebrow" style="color:#fff;">Замовити</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;letter-spacing:1px;margin-bottom:8px;">Портативний <span style="color:var(--orange);">душ</span></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.6);">Заповніть форму — наш менеджер зв'яжеться з вами</div>
+    </div>
+
+    <div id="orderSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+      <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
+      <div style="font-size: 22px; font-weight: 800; color: #22c55e; margin-bottom: 12px;">Замовлення отримано!</div>
+      <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 68 887 4330</div>
+    </div>
+
+    <form id="orderFormElement" onsubmit="submitOrder(event)">
+      <div class="form-field">
+        <label class="form-label">Оберіть модель</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
+          <label id="formModelBase" onclick="selectFormModel('cheap')" style="cursor:pointer;border:2px solid rgba(255,255,255,.15);border-radius:14px;padding:20px 12px;text-align:center;background:rgba(255,255,255,.06);transition:all .3s;">
+            <div id="formBaseTitle" style="font-weight:900;font-size:20px;letter-spacing:1px;color:rgba(255,255,255,.4);">BASE</div>
+            <div id="formBasePrice" style="font-size:13px;color:rgba(255,255,255,.3);margin-top:6px;font-weight:700;">₴499</div>
+          </label>
+          <label id="formModelPro" onclick="selectFormModel('premium')" style="cursor:pointer;border:2px solid #FA6400;border-radius:14px;padding:20px 12px;text-align:center;background:#FA6400;transition:all .3s;">
+            <div id="formProTitle" style="font-weight:900;font-size:20px;letter-spacing:1px;color:#fff;">PRO</div>
+            <div id="formProPrice" style="font-size:13px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:700;">₴899</div>
+          </label>
+        </div>
+        <input type="hidden" id="selectedModel" value="Pro — ₴899">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="nameField">Ім'я та прізвище</label>
+        <input class="form-input" id="nameField" type="text" placeholder="Наприклад: Іван Коваленко" required>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="phoneField">Номер телефону</label>
+        <input class="form-input" id="phoneField" type="tel" placeholder="+380 XX XXX XX XX" required>
+      </div>
+
+      <button type="submit" class="form-submit">Замовити зараз</button>
+
+      <div class="form-trust">
+        <div class="trust-item">🔒 Безпечно</div>
+        <div class="trust-item">📞 Швидка відповідь</div>
+        <div class="trust-item">✅ Без прихованих платежів</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════ COUNTER ═══════════ -->
+<section class="counter-section">
+  <div class="counter-content">
+    <div class="counter-label">Люди вже заказали 🎉</div>
+    <div class="counter-number"><span id="counterValue">853</span>+</div>
+    <div class="counter-subtext">портативних душів цього місяця</div>
+    <div class="counter-items">
+      <div class="counter-item"><span>⭐</span><span>5 зірок рейтинг</span></div>
+      <div class="counter-item"><span>🚚</span><span>Доставка 1-3 дні</span></div>
+      <div class="counter-item"><span>✅</span><span>100% гарантія</span></div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════ REVIEWS ═══════════ -->
 <section class="reviews-section">
   <div class="section-eyebrow">Відгуки</div>
   <div class="section-title-light">Що кажуть <span>покупці</span></div>
-  <div class="stars">★★★★★</div>
+  <div class="stars" style="color:#f59e0b;font-size:14px;letter-spacing:2px;margin-bottom:4px;">★★★★★</div>
   <div style="font-size:13px;color:#6b7c5a;font-weight:600;margin-bottom:8px;" id="reviewMeta">4.9 / 5 · 549 відгуків</div>
 
-  <!-- Stacked cards -->
   <div class="reviews-stack-wrap" id="reviewsStackWrap">
     <div class="review-stack-card" id="reviewStackCard">
       <div class="review-progress-bar" id="reviewProgressBar"></div>
@@ -1157,188 +517,38 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     </div>
   </div>
 
-  <!-- Nav -->
   <div class="review-stack-nav">
     <button class="review-nav-back" onclick="reviewBack()">Назад</button>
     <button class="review-nav-next" onclick="reviewNext()">Далі →</button>
   </div>
 
-  <!-- Hidden old markup for JS compatibility -->
+  <!-- Hidden legacy markup -->
   <div class="reviews-3d-wrap" id="reviews3dWrap" style="display:none">
     <div class="reviews-3d-track" id="reviews3dTrack">
-      <div class="review-3d-card" data-review-image="0">
-        <img src="https://static.tildacdn.com/tild3963-3936-4263-b962-343036363966/__2026-04-24__004440.png" alt="">
-        <div class="review-3d-body">
-          <div class="review-3d-stars" data-review-stars>★★★★★</div>
-          <div class="review-3d-text" data-review-text>Реально порятунок.</div>
-          <div class="review-3d-name" data-review-name>Олена Ткаченко</div>
-        </div>
-      </div>
-      <div class="review-3d-card" data-review-image="1">
-        <img src="https://static.tildacdn.com/tild3366-6231-4938-b934-333963653931/__2026-04-24__004454.png" alt="">
-        <div class="review-3d-body">
-          <div class="review-3d-stars" data-review-stars>★★★★★</div>
-          <div class="review-3d-text" data-review-text>Беру на дачу.</div>
-          <div class="review-3d-name" data-review-name>Михайло Бондаренко</div>
-        </div>
-      </div>
-      <div class="review-3d-card" data-review-image="2">
-        <img src="https://static.tildacdn.com/tild3832-3739-4938-b039-663538663731/__2026-04-24__004509.png" alt="">
-        <div class="review-3d-body">
-          <div class="review-3d-stars" data-review-stars>★★★★★</div>
-          <div class="review-3d-text" data-review-text>Для кемпінгу.</div>
-          <div class="review-3d-name" data-review-name>Андрій Марченко</div>
-        </div>
-      </div>
+      <div class="review-3d-card" data-review-image="0"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
+      <div class="review-3d-card" data-review-image="1"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
+      <div class="review-3d-card" data-review-image="2"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
     </div>
   </div>
   <div class="rev-dots" id="revDots3d" style="display:none"></div>
 </section>
 
-<!-- ═══════════ COUNTER ═══════════ -->
-
+<!-- ═══════════ FAQ ═══════════ -->
 <section class="faq-section">
   <div style="margin-bottom:36px;text-align:center;">
     <div class="section-eyebrow">Питання</div>
     <div class="section-title-light">Часто задаються <span>запитання</span></div>
   </div>
-  
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        <span>❓ Скільки часу займає доставка?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Доставляємо по всій Україні за 1-3 робочих дні. Експрес-доставка у Київ - в день замовлення.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        <span>💧 На скільки хватає батареї?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>До 190 хвилин безперервної роботи. Заряджається за 2-3 години через USB-C.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        <span>🔒 Чи безпечно для дітей?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Так! Має інтелектуальний термозахист з кольоровою індикацією (синій, зелений, червоний).</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-        <span>💰 Як замовити?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Звоніть за номером +380 68 887 4330 або натисніть на кнопку "Купити" - наш менеджер зв'яжеться з вами.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ ORDER FORM ═══════════ -->
-<section class="form-section" id="orderForm">
-  <div class="form-glow"></div>
-  
-  <div style="position:relative;z-index:2;">
-    <div style="text-align:center;margin-bottom:32px;">
-      <div class="section-eyebrow" style="color:#fff;">Замовити</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;letter-spacing:1px;margin-bottom:8px;">Портативний <span style="color:var(--orange);">душ</span></div>
-      <div style="font-size:13px;color:rgba(255,255,255,.6);">Заповніть форму — наш менеджер зв'яжеться з вами</div>
-    </div>
-    
-    <!-- Success message -->
-    <div id="orderSuccess" style="display:none; text-align:center; padding: 40px 20px;">
-      <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
-      <div style="font-size: 22px; font-weight: 800; color: #22c55e; margin-bottom: 12px;">Замовлення отримано!</div>
-      <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 68 887 4330</div>
-    </div>
-
-    <form id="orderFormElement" onsubmit="submitOrder(event)">
-      <!-- Model selector -->
-      <div class="form-field">
-        <label class="form-label">Оберіть модель</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
-          <label id="formModelBase" onclick="selectFormModel('cheap')" style="cursor:pointer;border:2px solid #2196F3;border-radius:12px;padding:14px 12px;text-align:center;background:rgba(33,150,243,.06);transition:all .2s;">
-            <div style="font-size:18px;margin-bottom:4px;">🚿</div>
-            <div style="font-weight:800;font-size:14px;color:#2196F3;">Base</div>
-            <div style="font-size:12px;color:#888;margin-top:2px;">₴499</div>
-          </label>
-          <label id="formModelPro" onclick="selectFormModel('premium')" style="cursor:pointer;border:2px solid #e0e0e0;border-radius:12px;padding:14px 12px;text-align:center;background:#fff;transition:all .2s;">
-            <div style="font-size:18px;margin-bottom:4px;">⭐</div>
-            <div style="font-weight:800;font-size:14px;color:#999;">Pro</div>
-            <div style="font-size:12px;color:#888;margin-top:2px;">₴899</div>
-          </label>
-        </div>
-        <input type="hidden" id="selectedModel" value="Base">
-      </div>
-
-      <div class="form-field">
-        <label class="form-label" for="nameField">Ім'я та прізвище</label>
-        <input class="form-input" id="nameField" type="text" placeholder="Наприклад: Іван Коваленко" required>
-      </div>
-      
-      <div class="form-field">
-        <label class="form-label" for="phoneField">Номер телефону</label>
-        <input class="form-input" id="phoneField" type="tel" placeholder="+380 XX XXX XX XX" required>
-      </div>
-      
-      <button type="submit" class="form-submit">
-        Замовити зараз
-      </button>
-      
-      <div class="form-trust">
-        <div class="trust-item">🔒 Безпечно</div>
-        <div class="trust-item">📞 Швидка відповідь</div>
-        <div class="trust-item">✅ Без прихованих платежів</div>
-      </div>
-    </form>
-  </div>
-</section>
-
-<section class="counter-section">
-  <div class="counter-content">
-    <div class="counter-label">Люди вже заказали 🎉</div>
-    <div class="counter-number">
-      <span id="counterValue">853</span>+
-    </div>
-    <div class="counter-subtext">портативних душів цього місяця</div>
-    <div class="counter-items">
-      <div class="counter-item">
-        <span class="counter-icon">⭐</span>
-        <span class="counter-text">5 зірок рейтинг</span>
-      </div>
-      <div class="counter-item">
-        <span class="counter-icon">🚚</span>
-        <span class="counter-text">Доставка 1-3 дні</span>
-      </div>
-      <div class="counter-item">
-        <span class="counter-icon">✅</span>
-        <span class="counter-text">100% гарантія</span>
-      </div>
-    </div>
-  </div>
+  <div class="faq-list"></div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">SmartDaily</div>
-  <div class="footer-contact">
-    <a href="tel:+380688874330">☎️ +380 68 887 4330</a>
-  </div>
+  <div class="footer-contact"><a href="tel:+380688874330">☎️ +380 68 887 4330</a></div>
   <div class="footer-links">
-    <a href="#privacy-modal" onclick="showModal('privacy')">📋 Політика конфіденціальності</a>
-    <a href="#returns-modal" onclick="showModal('returns')">↩️ Повернення і обмін</a>
+    <a href="#" onclick="showModal('privacy')">📋 Політика конфіденціальності</a>
+    <a href="#" onclick="showModal('returns')">↩️ Повернення і обмін</a>
   </div>
   <div class="footer-text">© 2025 SmartDaily · Всі права захищені</div>
 </footer>
@@ -1353,7 +563,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <p style="margin-bottom:12px;"><strong>Які дані ми збираємо:</strong> Ім'я, номер телефону, адреса доставки, інформація про замовлення.</p>
       <p style="margin-bottom:12px;"><strong>Як ми їх використовуємо:</strong> Для обробки замовлень, доставки товару, зв'язку з вами та поліпшення сервісу.</p>
       <p style="margin-bottom:12px;"><strong>Захист даних:</strong> Ми вживаємо всіх необхідних заходів для захисту ваших даних від несанкціонованого доступу.</p>
-      <p><strong>Контакт:</strong> Якщо у вас є питання, пишіть на наш номер: +380688874330</p>
+      <p><strong>Контакт:</strong> +380688874330</p>
     </div>
   </div>
 </div>
@@ -1365,9 +575,8 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     <div style="font-size:13px;color:#666;line-height:1.6;">
       <p style="margin-bottom:12px;"><strong>14 днів на повернення:</strong> Якщо товар вам не підходить, ви можете повернути його протягом 14 днів з дати отримання.</p>
       <p style="margin-bottom:12px;"><strong>Умови повернення:</strong> Товар має бути невжитий, в оригінальній упаковці та з документами.</p>
-      <p style="margin-bottom:12px;"><strong>Повернення грошей:</strong> Кошти повертаються на той рахунок, з якого вони були відправлені, протягом 5-7 днів після отримання товару.</p>
-      <p style="margin-bottom:12px;"><strong>Обмін:</strong> Якщо ви хочете обміняти товар на іншу модель або розмір, ми допоможемо вам.</p>
-      <p><strong>Свяжіться з нами:</strong> +380688874330 — наш менеджер допоможе з усіма питаннями обміну та повернення.</p>
+      <p style="margin-bottom:12px;"><strong>Повернення грошей:</strong> Протягом 5-7 днів після отримання товару.</p>
+      <p><strong>Свяжіться з нами:</strong> +380688874330</p>
     </div>
   </div>
 </div>
@@ -1375,18 +584,14 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <script>
 /* ── MODALS ── */
 function showModal(type) {
-  if (type === 'privacy') {
-    document.getElementById('privacy-modal').style.display = 'block';
-  } else if (type === 'returns') {
-    document.getElementById('returns-modal').style.display = 'block';
-  }
+  document.getElementById(type + '-modal').style.display = 'block';
 }
 function closeModal() {
   document.getElementById('privacy-modal').style.display = 'none';
   document.getElementById('returns-modal').style.display = 'none';
 }
 
-/* ── SCROLL ANIMATION FOR IMAGES ── */
+/* ── SCROLL ANIMATION FOR LAZY IMAGES ── */
 (function() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1396,7 +601,6 @@ function closeModal() {
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     img.style.opacity = '0';
     observer.observe(img);
@@ -1405,34 +609,39 @@ function closeModal() {
 
 /* ── FORM MODEL SELECTOR ── */
 function selectFormModel(product) {
-  const data = PRODUCTS[product];
   const baseEl = document.getElementById('formModelBase');
   const proEl = document.getElementById('formModelPro');
+  const baseTitle = document.getElementById('formBaseTitle');
+  const basePrice = document.getElementById('formBasePrice');
+  const proTitle = document.getElementById('formProTitle');
+  const proPrice = document.getElementById('formProPrice');
   const modelInput = document.getElementById('selectedModel');
-
   if (product === 'cheap') {
+    // Base selected — blue solid
     baseEl.style.borderColor = '#2196F3';
-    baseEl.style.background = 'rgba(33,150,243,.08)';
-    baseEl.querySelector('div:nth-child(2)').style.color = '#2196F3';
-    proEl.style.borderColor = '#e0e0e0';
-    proEl.style.background = '#fff';
-    proEl.querySelector('div:nth-child(2)').style.color = '#999';
+    baseEl.style.background = '#2196F3';
+    baseTitle.style.color = '#fff';
+    basePrice.style.color = 'rgba(255,255,255,.85)';
+    // Pro unselected — neutral
+    proEl.style.borderColor = 'rgba(255,255,255,.15)';
+    proEl.style.background = 'rgba(255,255,255,.06)';
+    proTitle.style.color = 'rgba(255,255,255,.4)';
+    proPrice.style.color = 'rgba(255,255,255,.3)';
     modelInput.value = 'Base — ₴499';
   } else {
+    // Pro selected — orange solid
     proEl.style.borderColor = '#FA6400';
-    proEl.style.background = 'rgba(250,100,0,.06)';
-    proEl.querySelector('div:nth-child(2)').style.color = '#FA6400';
-    baseEl.style.borderColor = '#e0e0e0';
-    baseEl.style.background = '#fff';
-    baseEl.querySelector('div:nth-child(2)').style.color = '#999';
+    proEl.style.background = '#FA6400';
+    proTitle.style.color = '#fff';
+    proPrice.style.color = 'rgba(255,255,255,.85)';
+    // Base unselected — neutral
+    baseEl.style.borderColor = 'rgba(255,255,255,.15)';
+    baseEl.style.background = 'rgba(255,255,255,.06)';
+    baseTitle.style.color = 'rgba(255,255,255,.4)';
+    basePrice.style.color = 'rgba(255,255,255,.3)';
     modelInput.value = 'Pro — ₴899';
   }
 }
-
-// Init form model to match current product on page load
-document.addEventListener('DOMContentLoaded', function() {
-  selectFormModel(currentProduct || 'premium');
-});
 
 /* ── SCROLL TO FORM ── */
 function scrollToForm() {
@@ -1458,10 +667,6 @@ function scrollToForm() {
   tick();
 })();
 
-/* ── STICKY CTA (видалено - елемент відсутній на сторінці) ── */
-
-/* ── STOCK COUNTDOWN (видалено - елемент відсутній на сторінці) ── */
-
 /* ── PRODUCT SLIDER ── */
 (function() {
   const track=document.getElementById('sliderTrack'), dotsWrap=document.getElementById('sliderDots');
@@ -1476,74 +681,13 @@ function scrollToForm() {
   wrap.addEventListener('touchend',e=>{ const diff=startX-e.changedTouches[0].clientX; if(Math.abs(diff)>40) goTo(diff>0?cur+1:cur-1); },{passive:true});
 })();
 
-/* ── REVIEWS 3D SCROLL CAROUSEL ── */
-(function() {
-  const track = document.getElementById('reviews3dTrack');
-  const dotsWrap = document.getElementById('revDots3d');
-  if (!track) return;
-  
-  const cards = Array.from(track.querySelectorAll('.review-3d-card'));
-  const total = cards.length;
-  
-  // Create dots
-  cards.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'rev-dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => scrollToCard(i);
-    dotsWrap.appendChild(d);
-  });
-  const dots = dotsWrap.querySelectorAll('.rev-dot');
-  
-  function scrollToCard(idx) {
-    const card = cards[idx];
-    if (!card) return;
-    const wrapRect = track.getBoundingClientRect();
-    const cardRect = card.getBoundingClientRect();
-    const offset = cardRect.left - wrapRect.left - (wrapRect.width - cardRect.width) / 2;
-    track.scrollBy({ left: offset, behavior: 'smooth' });
-  }
-  
-  function updateActiveCard() {
-    const wrapCenter = track.getBoundingClientRect().left + track.getBoundingClientRect().width / 2;
-    let closestIdx = 0, closestDist = Infinity;
-    cards.forEach((card, i) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const dist = Math.abs(cardCenter - wrapCenter);
-      if (dist < closestDist) { closestDist = dist; closestIdx = i; }
-    });
-    cards.forEach((card, i) => {
-      card.classList.remove('is-active', 'is-left', 'is-right');
-      if (i === closestIdx) {
-        card.classList.add('is-active');
-      } else if (i === closestIdx - 1) {
-        card.classList.add('is-left');
-      } else if (i === closestIdx + 1) {
-        card.classList.add('is-right');
-      }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === closestIdx));
-  }
-  
-  let scrollTimeout;
-  track.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveCard, 50);
-  }, { passive: true });
-  
-  // Initial state
-  setTimeout(updateActiveCard, 300);
-  window.addEventListener('resize', updateActiveCard);
-})();
-
 /* ── PARALLAX HERO ── */
 (function() {
   const heroBg = document.querySelector('.hero-bg');
   if (!heroBg) return;
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
-    const maxScroll = heroBg.parentElement.clientHeight;
-    if (scrolled < maxScroll) {
+    if (scrolled < heroBg.parentElement.clientHeight) {
       heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
   }, { passive: true });
@@ -1553,39 +697,34 @@ function scrollToForm() {
 (function() {
   const counter = document.getElementById('counterValue');
   if (!counter) return;
-  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         let current = 0;
-        const target = parseInt(document.getElementById('counterValue').textContent) || 853;
+        const target = parseInt(counter.textContent) || 853;
         const increment = target / 30;
         const timer = setInterval(() => {
           current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
+          if (current >= target) { current = target; clearInterval(timer); }
           counter.textContent = Math.floor(current);
         }, 30);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.3 });
-  
   observer.observe(counter);
 })();
 
-/* ── PRODUCT SWITCHER ── */
+/* ── PRODUCTS DATA ── */
 const PRODUCTS = {
-  cheap: { color: '#2196F3',
+  cheap: {
+    color: '#2196F3',
     name: 'Портативний електричний душ USB',
     price: 499,
     oldPrice: 999,
     reviewCount: 148,
     reviewRating: 4.8,
     counterValue: 183,
-    features: ['1 режим води', '2200 мАч батарея', '~60 хвилин роботи', 'IPX7 водозахист', 'USB зарядка'],
     specs: [
       { label: 'Тип', value: 'Портативний электричний душ' },
       { label: 'Батарея', value: '2200 мАч' },
@@ -1601,19 +740,19 @@ const PRODUCTS = {
       { label: 'Колір', value: 'Синій + чорний' }
     ],
     images: {
-      hero: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782563393/ChatGPT_Image_29_%D0%BC%D0%B0%D1%80._2026_%D0%B3._15_24_10_fxjw2x.png',
-      feature1: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782565787/5d9e9766-6e67-44f1-a603-1f46e86a11cd_hpzzia.png',
-      feature2: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782565786/2c9c15fd-3a79-41e2-92dc-cdac4f3b8c40_ztufgh.png',
-      howtobuy: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782565787/a7ef737a-f19b-4beb-8915-70cddc0a0d4c_1_ak8ujg.png',
-      box: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782503485/2_lhahdo.png',
+      hero: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1.2_o1dcx4.webp',
+      feature1: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/1_sluhwx.webp',
+      feature2: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1_vyrutt.webp',
+      howtobuy: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_ch1tel.webp',
+      box: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1_ayohc0.webp',
+      usecase: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/1.9_rfprxm.webp',
+      video: 'https://res.cloudinary.com/dyb7dyrme/video/upload/v1782867801/Video_1_x2pyo9.mp4',
       gallery: [
-        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782574465/%D0%91%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_6_gf9abo.png',
-        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782574158/%D0%91%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_3_bt6vyr.png',
-        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782574158/%D0%91%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_5_pmmdq0.png',
-        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782574467/%D0%91%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_7_wr4k6p.png'
+        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1_ulwe1w.webp',
+        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1_pb8v0r.webp',
+        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867803/1_kmdpig.webp',
+        'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/1_gjbads.webp'
       ],
-      usecase: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782564890/ChatGPT_Image_27_%D0%B8%D1%8E%D0%BD._2026_%D0%B3._15_54_24_hcn8uh.png',
-      video: 'https://res.cloudinary.com/dyb7dyrme/video/upload/v1782563369/%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B8%D0%B8%CC%86_%D0%B4%D1%83%D1%88_%D0%B7_%D0%B0%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%BE%D0%BC_USB_otjzj6.mp4',
       reviewImages: [
         'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782554059/%D0%BE%D1%82%D0%B7%D1%96%D0%B2_4_qh4hij.webp',
         'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782554059/446230547_wrev2m.webp',
@@ -1640,7 +779,6 @@ const PRODUCTS = {
     reviewCount: 549,
     reviewRating: 4.9,
     counterValue: 853,
-    features: ['Дисплей температури', '3 режими води', 'До 190 хвилин роботи', '0-80°C регулювання', 'VOOC швидка зарядка'],
     specs: [
       { label: 'Тип', value: 'Портативний душ 3.7В' },
       { label: 'Напруга', value: '3.7В' },
@@ -1656,19 +794,19 @@ const PRODUCTS = {
       { label: 'Колір', value: 'Помаранчевий + чорний' }
     ],
     images: {
-      hero: 'https://static.tildacdn.com/tild3464-3864-4430-b837-336238366165/ChatGPT_Image_27__20.png',
-      feature1: 'https://static.tildacdn.com/tild3263-3765-4066-a333-623564396435/ChatGPT_Image_27__20.png',
-      feature2: 'https://static.tildacdn.com/tild3731-3462-4235-b237-396264663336/ChatGPT_Image_27__20.png',
-      howtobuy: 'https://static.tildacdn.com/tild3135-6431-4936-a335-666162353635/ChatGPT_Image_27__20.png',
-      box: 'https://static.tildacdn.com/tild3536-3666-4539-b666-616162346231/ChatGPT_Image_27__20.png',
+      hero: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp',
+      feature1: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/2_mujevl.jpg',
+      feature2: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/3_lw3cxw.webp',
+      howtobuy: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/6_ixa3bf.webp',
+      box: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/5_hyqcon.webp',
+      usecase: 'https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/4_ykmtfp.webp',
+      video: 'https://res.cloudinary.com/dyb7dyrme/video/upload/v1782869288/%D1%82%D1%82%D1%82_xmnfpu.mp4',
       gallery: [
         'https://static.tildacdn.com/tild6437-6365-4132-a635-333132386265/7054599232_w640_h640.webp',
         'https://static.tildacdn.com/tild3566-3462-4131-b664-373736653935/6725366179_w640_h640.jpg',
         'https://static.tildacdn.com/tild6536-3465-4338-b366-643137633935/6152750054_w640_h204.jpg',
         'https://static.tildacdn.com/tild3363-6465-4931-b262-656433626161/6381707055_w640_h204.jpeg'
       ],
-      usecase: 'https://static.tildacdn.com/tild3966-3261-4134-a162-646630623564/ChatGPT_Image_27__20.png',
-      video: 'https://res.cloudinary.com/dcqxvj3dv/video/upload/v1777254638/1777253157199553_1_bhnlpt.mp4',
       reviewImages: [
         'https://static.tildacdn.com/tild3963-3936-4263-b962-343036363966/__2026-04-24__004440.png',
         'https://static.tildacdn.com/tild3366-6231-4938-b934-333963653931/__2026-04-24__004454.png',
@@ -1692,68 +830,29 @@ const PRODUCTS = {
 
 let currentProduct = 'premium';
 
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : [250, 100, 0];
-}
-
-function adjustBrightness(hex, percent) {
-  const rgb = hexToRgb(hex);
-  const adjusted = rgb.map(v => Math.min(255, Math.max(0, Math.round(v + v * percent / 100))));
-  return `rgb(${adjusted.join(',')})`;
-}
-
 function updateColorTheme(color) {
   document.documentElement.style.setProperty('--orange', color);
-  
-  // Buttons background + shadow
-  const buttons = document.querySelectorAll('.price-btn, .form-submit, .hero-cta-btn, .sticky-btn');
-  buttons.forEach(btn => {
+  document.querySelectorAll('.price-btn, .form-submit, .hero-cta-btn, .sticky-btn').forEach(btn => {
     btn.style.background = color;
-    btn.style.boxShadow = `0 12px 40px ${color}80`;
   });
-
-  // Timer label color
   const timerLabel = document.querySelector('.timer-label-top');
   if (timerLabel) timerLabel.style.color = color;
-
-  // Timer t-blocks background + border
   document.querySelectorAll('.t-block').forEach(b => {
     b.style.background = `linear-gradient(135deg, ${color}14 0%, ${color}0a 100%)`;
     b.style.borderColor = `${color}30`;
   });
-
-  // Timer colon color
-  document.querySelectorAll('.t-colon').forEach(c => {
-    c.style.color = `${color}80`;
-  });
-
-  // Timer progress bar
+  document.querySelectorAll('.t-colon').forEach(c => { c.style.color = `${color}80`; });
   const progressBar = document.querySelector('.timer-progress-bar');
-  if (progressBar) {
-    progressBar.style.background = `linear-gradient(90deg, ${color}, #ffcc44, ${color})`;
-    progressBar.style.boxShadow = `0 0 12px ${color}80`;
-  }
-
-  // Timer progress wrap
-  const progressWrap = document.querySelector('.timer-progress-wrap');
-  if (progressWrap) {
-    progressWrap.style.background = `linear-gradient(90deg, ${color}10, ${color}20, ${color}10)`;
-  }
-
-  // Sticky CTA border
-  const stickyCta = document.querySelector('.sticky-cta');
-  if (stickyCta) stickyCta.style.borderTopColor = `${color}33`;
+  if (progressBar) { progressBar.style.background = `linear-gradient(90deg, ${color}, #ffcc44, ${color})`; }
 }
 
 function switchProduct(product) {
   currentProduct = product;
   const data = PRODUCTS[product];
-  
-  // Update color theme (buttons, accents)
+
   updateColorTheme(data.color);
-  
-  // Update card selection styling
+
+  // Card selection styling
   const cardCheap = document.getElementById('cardCheap')?.querySelector('div');
   const cardPremium = document.getElementById('cardPremium')?.querySelector('div');
   if (cardCheap && cardPremium) {
@@ -1773,190 +872,122 @@ function switchProduct(product) {
       cardCheap.style.boxShadow = 'none';
     }
   }
-  
-  // Update Hero background image
+
+  // Hero BG
   const heroBg = document.querySelector('.hero-bg');
-  if (heroBg && data.images.hero) heroBg.style.backgroundImage = `url('${data.images.hero}')`;
-  
-  // Update Price block
+  if (heroBg) heroBg.style.backgroundImage = `url('${data.images.hero}')`;
+
+  // Price
   const priceNew = document.querySelector('.price-new');
   const priceOld = document.querySelector('.price-old');
   const saving = document.querySelector('.saving');
   if (priceNew) { priceNew.textContent = '₴' + data.price; priceNew.style.color = data.color; }
   if (priceOld) priceOld.textContent = data.oldPrice + ' грн';
-  if (saving) {
-    saving.textContent = 'Економія ' + (data.oldPrice - data.price) + ' грн';
-    saving.style.color = data.color;
-    saving.style.background = data.color + '1A';
-  }
-  
-  // Update Hero CTA button price text
+  if (saving) { saving.textContent = 'Економія ' + (data.oldPrice - data.price) + ' грн'; saving.style.color = data.color; saving.style.background = data.color + '1A'; }
+
+  // Hero CTA text
   const heroCta = document.querySelector('.hero-cta-btn');
   if (heroCta) {
     const arrow = heroCta.querySelector('.btn-arrow');
     heroCta.textContent = 'Купити зі знижкою — ' + data.price + ' грн ';
     if (arrow) heroCta.appendChild(arrow);
   }
-  
-  // Update Gallery slider images (4 photos)
-  const galleryImgs = document.querySelectorAll('[data-gallery-image]');
-  galleryImgs.forEach((el) => {
+
+  // Gallery
+  document.querySelectorAll('[data-gallery-image]').forEach(el => {
     const idx = parseInt(el.getAttribute('data-gallery-image'));
-    if (data.images.gallery && data.images.gallery[idx]) {
-      el.src = data.images.gallery[idx];
-    }
+    if (data.images.gallery && data.images.gallery[idx]) el.src = data.images.gallery[idx];
   });
-  
-  // Update Video
+
+  // Video
   const video = document.querySelector('[data-product-video]');
-  if (video && data.images.video) {
-    video.src = data.images.video;
-    video.load();
-    video.play().catch(() => {});
-  }
-  
-  // Update Features Images (advantages block)
+  if (video && data.images.video) { video.src = data.images.video; video.load(); video.play().catch(() => {}); }
+
+  // Feature images
   const features = document.querySelectorAll('[data-feature-image]');
   features.forEach((el, i) => {
     if (i === 0 && data.images.feature1) el.src = data.images.feature1;
     if (i === 1 && data.images.feature2) el.src = data.images.feature2;
   });
-  
-  // Update "Where to use" image
+
+  // Use / box / howtobuy
   const useImg = document.querySelector('[data-usecase]');
-  if (useImg && data.images.usecase) useImg.src = data.images.usecase;
-  
-  // Update Box (комплектація) & How To Buy
-  const howtobuy = document.querySelector('[data-howtobuy]');
-  const box = document.querySelector('[data-box]');
-  if (howtobuy && data.images.howtobuy) howtobuy.src = data.images.howtobuy;
-  if (box && data.images.box) box.src = data.images.box;
-  
-  // Update Review images
-  const reviewImgs = document.querySelectorAll('[data-review-image]');
-  reviewImgs.forEach((card) => {
-    const idx = parseInt(card.getAttribute('data-review-image'));
-    const img = card.querySelector('img');
-    if (img && data.images.reviewImages && data.images.reviewImages[idx]) {
-      img.src = data.images.reviewImages[idx];
-    }
-    const textEl = card.querySelector('[data-review-text]');
-    const starsEl = card.querySelector('[data-review-stars]');
-    const nameEl = card.querySelector('[data-review-name]');
-    if (data.reviewTexts && data.reviewTexts[idx]) {
-      if (textEl) textEl.textContent = data.reviewTexts[idx].text;
-      if (starsEl) starsEl.textContent = data.reviewTexts[idx].stars;
-      if (nameEl) nameEl.textContent = data.reviewTexts[idx].name;
-    }
-  });
+  if (useImg) useImg.src = data.images.usecase;
+  const boxImg = document.querySelector('[data-box]');
+  if (boxImg) boxImg.src = data.images.box;
+  const howtobuyImg = document.querySelector('[data-howtobuy]');
+  if (howtobuyImg) howtobuyImg.src = data.images.howtobuy;
 
-  // Update FAQ per product
-  if (data.faq) {
-    const faqList = document.querySelector('.faq-list');
-    if (faqList) {
-      faqList.innerHTML = data.faq.map(item => `
-        <div class="faq-item">
-          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            <span>${item.q}</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer"><p>${item.a}</p></div>
-        </div>
-      `).join('');
-    }
+  // Specs table
+  const tableBody = document.querySelector('.specs-table tbody');
+  if (tableBody) {
+    tableBody.innerHTML = data.specs.map((spec, i) => `
+      <tr style="${i % 2 === 0 ? 'background: rgba(250,100,0,.02)' : ''}">
+        <td style="padding:14px 16px;border-bottom:1px solid #eee;font-weight:600;color:var(--text);">${spec.label}</td>
+        <td style="padding:14px 16px;border-bottom:1px solid #eee;color:#666;">${spec.value}</td>
+      </tr>`).join('');
   }
-  
-  // Update Specs Table
-  updateSpecsTable(data.specs);
 
-  // Update review count & rating
-  const reviewMeta = document.querySelector('.reviews-section [style*="color:#999"]');
-  if (reviewMeta) reviewMeta.textContent = data.reviewRating + ' / 5 · ' + data.reviewCount + ' відгуків';
+  // FAQ
+  const faqList = document.querySelector('.faq-list');
+  if (faqList && data.faq) {
+    faqList.innerHTML = data.faq.map(item => `
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>${item.q}</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><p>${item.a}</p></div>
+      </div>`).join('');
+  }
 
-  // Update counter
+  // Review meta
+  const meta = document.getElementById('reviewMeta');
+  if (meta) meta.textContent = `${data.reviewRating} / 5 · ${data.reviewCount} відгуків`;
+
+  // Counter
   const counterEl = document.getElementById('counterValue');
   if (counterEl) counterEl.textContent = data.counterValue;
-  
-  console.log('✅ Продукт змінено на:', product, '| Колір:', data.color);
+
+  // Stack reviews
+  const imgs = (data.images && data.images.reviewImages) ? data.images.reviewImages : [];
+  const reviews = data.reviewTexts.map((r, i) => ({ ...r, img: imgs[i] || '' }));
+  _initStackReviews(reviews);
+
+  // Form model sync
+  selectFormModel(product);
 }
-function updateSpecsTable(specs) {
-  const tableBody = document.querySelector('.specs-table tbody');
-  if (!tableBody) return;
-  
-  tableBody.innerHTML = specs.map((spec, i) => `
-    <tr style="${i % 2 === 0 ? 'background: rgba(250,100,0,.02)' : ''}">
-      <td style="padding: 14px 16px; border-bottom: 1px solid #eee; font-weight: 600; color: var(--text);">${spec.label}</td>
-      <td style="padding: 14px 16px; border-bottom: 1px solid #eee; color: #666;">${spec.value}</td>
-    </tr>
-  `).join('');
-}
+
+/* ── SUBMIT ORDER ── */
 function submitOrder(event) {
   event.preventDefault();
-  
   const nameField = document.getElementById('nameField');
   const phoneField = document.getElementById('phoneField');
   const submitBtn = document.querySelector('.form-submit');
-  
   const name = nameField.value.trim();
   const phone = phoneField.value.trim();
-  
-  if (!name || !phone) {
-    alert('Заповніть всі обов\'язкові поля!');
-    return;
-  }
-  
-  // Disable button
+  if (!name || !phone) { alert('Заповніть всі обов\'язкові поля!'); return; }
   submitBtn.disabled = true;
   submitBtn.textContent = 'Відправляємо...';
-  
-  // BOT SETTINGS
   const BOT_TOKEN = '8762846621:AAG7rAXiKGEQo_0LlTvUnbEfiybtqirSLng';
   const CHAT_ID = '353934036';
-  
-  // Формуємо повідомлення
   const model = document.getElementById('selectedModel')?.value || 'не вказано';
   const message = `🛒 <b>Нове замовлення SmartDaily!</b>\n\n📦 <b>Модель:</b> ${model}\n👤 <b>Ім'я:</b> ${name}\n📞 <b>Телефон:</b> ${phone}\n\n⏰ <i>${new Date().toLocaleString('uk-UA')}</i>`;
-  
-  console.log('📤 Відправляю замовлення:', { name, phone });
-  
-  // МЕТОД 1: Через fetch (основний)
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message,
-      parse_mode: 'HTML'
-    })
+    body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
   })
-  .then(response => {
-    console.log('📡 Telegram відповідь:', response.status);
-    return response.json();
-  })
+  .then(r => r.json())
   .then(data => {
-    console.log('✅ Telegram дані:', data);
-    
     if (data.ok) {
-      // 🔥 Meta Pixel — Purchase event (до будь-якого UI)
       const price = currentProduct === 'premium' ? 899 : 499;
-      if (typeof fbq === 'function') {
-        fbq('track', 'Purchase', {
-          value: price,
-          currency: 'UAH',
-          content_name: document.getElementById('selectedModel')?.value || 'SmartDaily',
-          content_type: 'product'
-        });
-        console.log('✅ Meta Pixel Purchase відправлено, сума:', price);
-      }
-
+      if (typeof fbq === 'function') fbq('track', 'Purchase', { value: price, currency: 'UAH' });
       submitBtn.textContent = '✅ Замовлення отримано!';
       submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-
-      // Показуємо success блок замість alert
       const successDiv = document.getElementById('orderSuccess');
       if (successDiv) successDiv.style.display = 'block';
       document.getElementById('orderFormElement').style.display = 'none';
-
       setTimeout(() => {
         document.getElementById('orderFormElement').reset();
         document.getElementById('orderFormElement').style.display = 'block';
@@ -1966,26 +997,12 @@ function submitOrder(event) {
         submitBtn.disabled = false;
       }, 4000);
     } else {
-      // Telegram повернув помилку - покажемо конкретну причину
-      console.error('❌ Telegram API помилка:', data);
-      let errorMsg = data.description || 'Невідома помилка';
-      
-      if (errorMsg.includes('chat not found')) {
-        errorMsg = 'Бот не активований! Потрібно написати боту /start в Telegram спочатку.';
-      } else if (errorMsg.includes('bot was blocked')) {
-        errorMsg = 'Бот заблокований користувачем.';
-      } else if (errorMsg.includes('Unauthorized')) {
-        errorMsg = 'Невірний BOT_TOKEN.';
-      }
-      
-      throw new Error(errorMsg);
+      throw new Error(data.description || 'Невідома помилка');
     }
   })
   .catch(error => {
-    console.error('❌ Помилка відправки:', error.message);
     submitBtn.textContent = 'Замовити зараз';
     submitBtn.disabled = false;
-    
     alert('⚠️ ' + error.message + '\n\nБудь ласка, подзвоніть: +380 68 887 4330\n\nВаші дані:\n📝 ' + name + '\n📞 ' + phone);
   });
 }
@@ -2013,13 +1030,9 @@ function _renderStackCard(animate) {
   const r = _reviewData[_reviewIdx];
   if (!r) return;
   const card = document.getElementById('reviewStackCard');
-
   if (animate && card) {
     card.classList.add('exiting');
-    setTimeout(() => {
-      card.classList.remove('exiting');
-      _fillCard(r);
-    }, 360);
+    setTimeout(() => { card.classList.remove('exiting'); _fillCard(r); }, 360);
   } else {
     _fillCard(r);
   }
@@ -2030,39 +1043,16 @@ function _fillCard(r) {
   const num = String(_reviewIdx + 1).padStart(2, '0');
   document.getElementById('reviewCardNum').textContent = `ВІДГУК ${num}`;
   const img = document.getElementById('reviewCardImg');
-  if (r.img) { img.src = r.img; img.style.display = 'block'; }
-  else { img.style.display = 'none'; }
+  if (r.img) { img.src = r.img; img.style.display = 'block'; } else { img.style.display = 'none'; }
   document.getElementById('reviewCardStars').textContent = r.stars || '★★★★★';
   document.getElementById('reviewCardText').textContent = r.text;
   document.getElementById('reviewCardName').textContent = r.name;
 }
 
-function reviewNext() {
-  _reviewIdx = (_reviewIdx + 1) % _reviewData.length;
-  _renderStackCard(true);
-}
+function reviewNext() { _reviewIdx = (_reviewIdx + 1) % _reviewData.length; _renderStackCard(true); }
+function reviewBack() { _reviewIdx = (_reviewIdx - 1 + _reviewData.length) % _reviewData.length; _renderStackCard(true); }
 
-function reviewBack() {
-  _reviewIdx = (_reviewIdx - 1 + _reviewData.length) % _reviewData.length;
-  _renderStackCard(true);
-}
-
-// Patch switchProduct to also re-init stack reviews
-const _origSwitch = switchProduct;
-switchProduct = function(product) {
-  _origSwitch(product);
-  const data = PRODUCTS[product];
-  if (data && data.reviewTexts) {
-    const imgs = (data.images && data.images.reviewImages) ? data.images.reviewImages : [];
-    const reviews = data.reviewTexts.map((r, i) => ({ ...r, img: imgs[i] || '' }));
-    _initStackReviews(reviews);
-  }
-  // Also update review meta text
-  const meta = document.getElementById('reviewMeta');
-  if (meta && data) meta.textContent = `${data.reviewRating} / 5 · ${data.reviewCount} відгуків`;
-};
-
-// Swipe support on stack card
+// Swipe on review card
 (function() {
   let sx = 0;
   const wrap = document.getElementById('reviewsStackWrap');
@@ -2074,51 +1064,24 @@ switchProduct = function(product) {
   }, {passive:true});
 })();
 
-// Initialize on page load — MUST be after the switchProduct patch above
-document.addEventListener('DOMContentLoaded', function() {
-  switchProduct('premium');
-});
-
+/* ── VIDEO AUTOPLAY ── */
 (function() {
   const video = document.getElementById('videoPlayer');
   if (!video) return;
-  
-  // Спробуємо запустити відео одразу
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(error => {
-      // Якщо автозапуск не дозволено, запустимо при першій інтеракції
-      document.addEventListener('click', () => video.play(), { once: true });
-    });
-  }
-  
-  // Autoplay при скролі до секції (як резервна опція)
+  const playP = video.play();
+  if (playP !== undefined) playP.catch(() => { document.addEventListener('click', () => video.play(), { once: true }); });
   const section = document.getElementById('videoSection');
   if (!section) return;
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { 
-      if (e.isIntersecting) { 
-        video.play().catch(() => {}); 
-      } else { 
-        video.pause(); 
-      } 
-    });
+    entries.forEach(e => { if (e.isIntersecting) video.play().catch(() => {}); else video.pause(); });
   }, { threshold: 0.25 });
   obs.observe(section);
 })();
 
-/* ── CONVERSION TOAST — сьогодні купили 36 разів ── */
-(function() {
-  const toast = document.getElementById('convToast'); let shown=false;
-  window.addEventListener('scroll', ()=>{
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    if (!shown && scrollPercent > 45) {
-      shown = true;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 5000);
-    }
-  }, {passive:true});
-})();
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', function() {
+  switchProduct('premium');
+});
 </script>
 </body>
 </html>
