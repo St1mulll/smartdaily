@@ -39,7 +39,7 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(--text); overflow-x: hidden; }
 
 /* ── HERO ── */
-.hero { position: relative; width: 100%; height: 75vh; min-height: 75dvh; overflow: hidden; display: flex; align-items: flex-end; }
+.hero { position: relative; width: 100%; height: 75vh; min-height: 75dvh; overflow: hidden; display: flex; align-items: flex-end; padding-top: 40px; }
 .hero-bg {
   position: absolute; inset: 0;
   background: url('https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp') center/cover no-repeat;
@@ -80,6 +80,49 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 }
 .btn-arrow { width: 28px; height: 28px; background: rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
 
+/* ── STICKY CTA ── */
+.sticky-cta { 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  z-index: 100; 
+  background: var(--dark2); 
+  border-top: 2px solid var(--orange);
+  padding: 12px 16px; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  transform: translateY(100%); 
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 -2px 16px rgba(0,0,0,.15);
+}
+.sticky-cta.visible { transform: translateY(0); }
+.sticky-price { flex-shrink: 0; }
+.sticky-price-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--orange); line-height: 1; font-weight: 900; }
+.sticky-price-sub { font-size: 10px; color: rgba(255,255,255,.3); font-weight: 600; }
+.sticky-btn { 
+  flex: 1; 
+  background: var(--orange); 
+  color: #fff; 
+  font-size: 15px; 
+  font-weight: 800; 
+  text-transform: uppercase; 
+  letter-spacing: .5px; 
+  padding: 14px; 
+  border-radius: 12px; 
+  border: none; 
+  cursor: pointer; 
+  text-align: center; 
+  display: block; 
+  position: relative; 
+  overflow: hidden; 
+  transition: transform .2s, box-shadow .3s;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+.sticky-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.sticky-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); animation: shimmer 2.8s ease-in-out 1s infinite; }
+
 /* ── TIMER ── */
 .timer-section { background: linear-gradient(135deg, #f9f7f4 0%, #fdfbf8 100%); padding: 48px 20px; position: relative; overflow: hidden; }
 .timer-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); box-shadow: 0 0 20px rgba(250,100,0,.4); }
@@ -101,6 +144,35 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .timer-progress-wrap { background: linear-gradient(90deg, rgba(250,100,0,.06), rgba(250,100,0,.12), rgba(250,100,0,.06)); border-radius: 100px; height: 4px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.05); }
 .timer-progress-bar { height: 100%; background: linear-gradient(90deg, var(--orange), #ffaa00, var(--orange)); border-radius: 100px; width: 100%; transition: width 1s linear; box-shadow: 0 0 12px rgba(250,100,0,.5); }
 
+/* ── GUARANTEE BLOCK ── */
+.guarantee-block { 
+  background: linear-gradient(135deg, rgba(250,100,0,.05), rgba(250,100,0,.02)); 
+  border: 2px solid rgba(250,100,0,.15); 
+  border-radius: 16px; 
+  padding: 24px 20px; 
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) { .guarantee-block { grid-template-columns: 1fr; } }
+.guarantee-item-inline { 
+  display: flex; 
+  gap: 12px; 
+  align-items: flex-start;
+}
+.guarantee-item-inline::before {
+  content: '✅';
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.guarantee-item-inline span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+}
+
 /* ── FAQ ── */
 .faq-section { background: var(--light2); padding: 48px 20px; }
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
@@ -115,7 +187,7 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .faq-answer p { font-size: 14px; color: #666; line-height: 1.6; }
 
 .price-section { background: var(--light2); padding: 12px 20px; }
-.section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; text-align: center; }
 .price-card { background: var(--light); border-radius: 20px; padding: 24px 20px; border: 1px solid rgba(250,100,0,.12); position: relative; overflow: hidden; }
 .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ffaa00); }
 .price-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
@@ -134,13 +206,6 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .stock-warn { text-align: center; font-size: 12px; color: #999; font-weight: 600; margin-top: 12px; }
 .stock-warn strong { color: var(--orange); }
 
-/* ── GUARANTEE ── */
-.guarantee-section { background: linear-gradient(135deg, var(--light) 0%, #fdfbf8 100%); padding: 48px 20px; position: relative; overflow: hidden; }
-.guarantee-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
-@media (max-width: 640px) { .guarantee-items { grid-template-columns: 1fr; } }
-.guarantee-item { background: #fff; border: 2px solid rgba(250,100,0,.15); border-radius: 14px; padding: 20px 16px; transition: all .3s; cursor: pointer; }
-.guarantee-item:hover { border-color: var(--orange); box-shadow: 0 8px 24px rgba(250,100,0,.15); transform: translateY(-4px); }
-
 .counter-section { background: linear-gradient(135deg, var(--orange) 0%, #ff7a1a 100%); padding: 48px 20px; text-align: center; position: relative; overflow: hidden; }
 .counter-content { position: relative; z-index: 2; animation: slideUp 0.8s ease-out; }
 .counter-label { font-size: 14px; color: rgba(255,255,255,.8); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
@@ -150,14 +215,14 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .counter-item { background: rgba(255,255,255,.15); backdrop-filter: blur(10px); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); font-size: 12px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all .3s; }
 .counter-item:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
 
-.gallery-section { background: var(--light2); padding: 40px 20px; }
-.section-title-light { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--text); letter-spacing: 1px; margin-bottom: 6px; }
+.gallery-section { background: var(--light2); padding: 40px 20px; text-align: center; }
+.section-title-light { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--text); letter-spacing: 1px; margin-bottom: 6px; text-align: center; }
 .section-title-light span { color: var(--orange); }
-.section-sub-light { font-size: 13px; color: #999; font-weight: 500; margin-bottom: 20px; }
-.slider-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--light); border: 1px solid rgba(0,0,0,.07); box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.section-sub-light { font-size: 13px; color: #999; font-weight: 500; margin-bottom: 20px; text-align: center; }
+.slider-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--light); border: 1px solid rgba(0,0,0,.07); box-shadow: 0 4px 24px rgba(0,0,0,.06); max-width: 100%; margin: 0 auto; }
 .slider-track { display: flex; transition: transform .4s cubic-bezier(.4,0,.2,1); will-change: transform; }
-.slide { flex: 0 0 100%; min-width: 0; aspect-ratio: 1/1; background: #f0eeea; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slide { flex: 0 0 100%; min-width: 0; aspect-ratio: 1/1; background: #f0eeea; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; }
+.slide img { width: 100%; height: 100%; object-fit: cover; display: block; background: #f0eeea; }
 .slider-controls { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 16px 12px; }
 .slider-btn { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,.12); background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; color: var(--text); transition: background .15s; flex-shrink: 0; }
 .slider-btn:active { background: var(--orange); color: #fff; border-color: var(--orange); }
@@ -167,19 +232,132 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .swipe-hint { text-align: center; font-size: 11px; color: #bbb; font-weight: 600; padding: 0 0 12px; }
 
 /* ── VIDEO ── */
-.video-section { background: var(--light2); padding: 40px 20px; position: relative; overflow: hidden; }
+.video-section { background: var(--light2); padding: 40px 20px; position: relative; overflow: hidden; text-align: center; }
 .video-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--orange), transparent); }
 .video-blob { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(250,100,0,.08) 0%, transparent 70%); top: -80px; right: -80px; pointer-events: none; }
-.section-title-dark { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--text); letter-spacing: 1px; line-height: 1.1; margin-bottom: 6px; }
+.section-title-dark { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--text); letter-spacing: 1px; line-height: 1.1; margin-bottom: 6px; text-align: center; }
 .section-title-dark span { color: var(--orange); }
-.section-sub-dark { font-size: 13px; color: #666; font-weight: 500; margin-bottom: 28px; }
-.video-wrap { position: relative; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(250,100,0,.25); box-shadow: 0 8px 40px rgba(0,0,0,.7); margin-top: 24px; aspect-ratio: 9/16; }
+.section-sub-dark { font-size: 13px; color: #666; font-weight: 500; margin-bottom: 28px; text-align: center; }
+.video-wrap { position: relative; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(250,100,0,.25); box-shadow: 0 8px 40px rgba(0,0,0,.7); margin: 24px auto 0; aspect-ratio: 9/16; max-height: 600px; max-width: 400px; width: 100%; }
 .video-wrap video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; border: none; display: block; object-fit: cover; }
 .video-badge { position: absolute; top: 14px; left: 14px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; z-index: 2; }
 
-/* ── FEATURES ── */
-.features-section { background: var(--dark); padding: 0 20px; position: relative; overflow: hidden; }
-.features-section .blob { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(250,100,0,.12) 0%, transparent 70%); bottom: 40px; right: -60px; pointer-events: none; z-index: 1; }
+.video-cta-wrap { 
+  margin: 32px 0;
+  display: flex;
+  gap: 10px;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+.video-cta-btn {
+  flex: 1;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 10px; 
+  background: var(--orange); 
+  color: #fff; 
+  font-family: 'Manrope', sans-serif; 
+  font-size: 16px; 
+  font-weight: 800; 
+  text-transform: uppercase; 
+  letter-spacing: .5px; 
+  padding: 18px 24px; 
+  border-radius: 14px; 
+  border: none; 
+  cursor: pointer; 
+  position: relative; 
+  overflow: hidden; 
+  box-shadow: 0 6px 24px rgba(0,0,0,.2); 
+  transition: transform .15s, box-shadow .3s;
+}
+.video-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,.28); }
+.video-cta-btn::before { 
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: -100%; 
+  width: 60%; 
+  height: 100%; 
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); 
+  animation: shimmer 2.8s ease-in-out infinite; 
+}
+
+/* ── REVIEWS ── */
+.reviews-section { background: #fff; padding: 48px 20px 56px; text-align: center; position: relative; }
+.rating-card-beautiful { 
+  background: linear-gradient(135deg, rgba(250,100,0,.08) 0%, rgba(250,100,0,.04) 100%);
+  border: 2px solid rgba(250,100,0,.2);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin: 24px auto 32px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.rating-card-beautiful::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), #ffaa00);
+}
+.rating-stars-big {
+  font-size: 32px;
+  letter-spacing: 4px;
+  color: #f59e0b;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(245,158,11,.2);
+}
+.rating-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.rating-number span {
+  font-size: 24px;
+  color: #999;
+  font-weight: 600;
+  margin-left: 4px;
+}
+.rating-meta {
+  font-size: 14px;
+  color: #666;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.reviews-stack-wrap { position: relative; width: 300px; height: 420px; margin: 32px auto 0; }
+.reviews-stack-wrap::before, .reviews-stack-wrap::after { content: ''; position: absolute; left: 50%; background: #fff; border-radius: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+.reviews-stack-wrap::before { width: 88%; height: 96%; top: 10px; transform: translateX(-50%) rotate(3deg); z-index: 1; opacity: .7; }
+.reviews-stack-wrap::after { width: 82%; height: 94%; top: 18px; transform: translateX(-50%) rotate(6deg); z-index: 0; opacity: .45; }
+.review-stack-card { position: absolute; inset: 0; background: #fff; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,0,0,.12); z-index: 10; display: flex; flex-direction: column; padding: 28px 28px 24px; text-align: left; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s; overflow: hidden; }
+.review-stack-card.exiting { transform: translateX(-130%) rotate(-8deg) !important; opacity: 0; transition: transform .35s ease-in, opacity .25s !important; }
+.review-progress-bar { display: flex; gap: 6px; margin-bottom: 20px; }
+.review-progress-seg { flex: 1; height: 3px; border-radius: 100px; background: #e0e0e0; transition: background .3s; }
+.review-progress-seg.done, .review-progress-seg.active { background: #222; }
+.review-card-close { position: absolute; top: 22px; right: 22px; width: 28px; height: 28px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #999; cursor: pointer; border: none; }
+.review-card-num { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; margin-bottom: 8px; }
+.review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.review-card-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.review-user-info { text-align: left; }
+.review-user-name { font-size: 13px; font-weight: 800; color: #222; text-transform: uppercase; letter-spacing: 0.5px; }
+.review-user-city { font-size: 11px; color: #999; font-weight: 600; margin-top: 2px; }
+.review-card-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+.review-card-text { font-size: 14px; color: #222; line-height: 1.7; font-weight: 500; flex: 1; }
+.review-stack-nav { display: flex; align-items: center; justify-content: space-between; width: 300px; margin: 20px auto 0; }
+.review-nav-back { background: none; border: none; font-size: 15px; font-weight: 700; color: #888; cursor: pointer; padding: 10px 0; font-family: 'Manrope', sans-serif; }
+.review-nav-next { background: var(--orange); color: #fff; border: none; border-radius: 100px; font-size: 15px; font-weight: 800; padding: 13px 36px; cursor: pointer; transition: transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-family: 'Manrope', sans-serif; }
+.review-nav-next:hover { transform: translateY(-1px); }
+.reviews-3d-wrap, .reviews-3d-track, .review-3d-card, .rev-dots { display: none !important; }
 
 /* ── FORM ── */
 .form-section { background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%); padding: 48px 20px 60px; position: relative; overflow: hidden; }
@@ -194,42 +372,25 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
 .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
 .form-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); animation: shimmer 2.8s ease-in-out infinite; }
 .form-submit:active { transform: scale(.97); }
-.form-trust { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-.trust-item { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.25); }
+.form-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.trust-item-beautiful { display: flex; align-items: center; gap: 12px; background: rgba(250,100,0,.1); border: 1px solid rgba(250,100,0,.25); border-radius: 12px; padding: 14px 16px; transition: all .3s; }
+.trust-item-beautiful:hover { background: rgba(250,100,0,.15); border-color: rgba(250,100,0,.4); }
+.trust-icon-box { font-size: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(255,255,255,.08); border-radius: 10px; }
+.trust-item-beautiful span { font-size: 12px; color: rgba(255,255,255,.7); font-weight: 600; line-height: 1.4; }
+.trust-item-beautiful strong { color: var(--orange); font-weight: 800; display: block; margin-top: 2px; }
 
-.specs-section { background: var(--light); padding: 40px 20px; }
-.use-section { background: #fff; padding: 40px 20px; position: relative; }
+@keyframes pulse-button { 0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,.2), 0 0 40px rgba(250,100,0,.6); } 50% { box-shadow: 0 8px 32px rgba(0,0,0,.3), 0 0 60px rgba(250,100,0,.9); } }
+.form-submit.pulse { animation: pulse-button 2s ease-in-out infinite; }
+
+.specs-section { background: var(--light); padding: 40px 20px; text-align: center; }
+.use-section { background: #fff; padding: 40px 20px; position: relative; text-align: center; }
 .use-section .blob2 { position: absolute; width: 260px; height: 260px; background: radial-gradient(circle, rgba(250,100,0,.1) 0%, transparent 70%); bottom: -60px; left: -60px; pointer-events: none; z-index: 1; }
-.use-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; }
-.box-section { background: #fff; padding: 40px 20px; }
-.box-hero-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; }
-.howtobuy-section { background: var(--light2); padding: 40px 20px; }
-.howtobuy-img { width: 100%; display: block; border-radius: 20px; margin-top: 0; margin-bottom: 0; }
+.use-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; opacity: 1 !important; max-width: 600px; margin: 0 auto; }
+.box-section { background: #fff; padding: 40px 20px; text-align: center; }
+.box-hero-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; margin-top: 0; opacity: 1 !important; max-width: 600px; margin: 0 auto; }
+.howtobuy-section { background: var(--light2); padding: 40px 20px; text-align: center; }
+.howtobuy-img { width: 100%; display: block; object-fit: cover; border-radius: 20px; margin-top: 0; margin-bottom: 0; opacity: 1 !important; max-width: 600px; margin: 0 auto; }
 
-/* ── REVIEWS ── */
-.reviews-section { background: #fff; padding: 48px 20px 56px; text-align: center; position: relative; }
-.reviews-stack-wrap { position: relative; width: 300px; height: 420px; margin: 32px auto 0; }
-.reviews-stack-wrap::before, .reviews-stack-wrap::after { content: ''; position: absolute; left: 50%; background: #fff; border-radius: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-.reviews-stack-wrap::before { width: 88%; height: 96%; top: 10px; transform: translateX(-50%) rotate(3deg); z-index: 1; opacity: .7; }
-.reviews-stack-wrap::after { width: 82%; height: 94%; top: 18px; transform: translateX(-50%) rotate(6deg); z-index: 0; opacity: .45; }
-.review-stack-card { position: absolute; inset: 0; background: #fff; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,0,0,.12); z-index: 10; display: flex; flex-direction: column; padding: 28px 28px 24px; text-align: left; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s; overflow: hidden; }
-.review-stack-card.exiting { transform: translateX(-130%) rotate(-8deg) !important; opacity: 0; transition: transform .35s ease-in, opacity .25s !important; }
-.review-progress-bar { display: flex; gap: 6px; margin-bottom: 20px; }
-.review-progress-seg { flex: 1; height: 3px; border-radius: 100px; background: #e0e0e0; transition: background .3s; }
-.review-progress-seg.done, .review-progress-seg.active { background: #222; }
-.review-card-close { position: absolute; top: 22px; right: 22px; width: 28px; height: 28px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #999; cursor: pointer; border: none; }
-.review-card-num { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; margin-bottom: 16px; }
-.review-card-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 14px; }
-.review-card-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
-.review-card-text { font-size: 14px; color: #222; line-height: 1.7; font-weight: 500; flex: 1; }
-.review-card-name { font-size: 12px; font-weight: 800; color: #888; margin-top: 16px; padding-top: 14px; border-top: 1px solid #f0f0f0; text-transform: uppercase; letter-spacing: 1px; }
-.review-stack-nav { display: flex; align-items: center; justify-content: space-between; width: 300px; margin: 20px auto 0; }
-.review-nav-back { background: none; border: none; font-size: 15px; font-weight: 700; color: #888; cursor: pointer; padding: 10px 0; font-family: 'Manrope', sans-serif; }
-.review-nav-next { background: var(--orange); color: #fff; border: none; border-radius: 100px; font-size: 15px; font-weight: 800; padding: 13px 36px; cursor: pointer; transition: transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-family: 'Manrope', sans-serif; }
-.review-nav-next:hover { transform: translateY(-1px); }
-.reviews-3d-wrap, .reviews-3d-track, .review-3d-card, .rev-dots { display: none !important; }
-
-/* ── FOOTER ── */
 footer { background: #080808; padding: 32px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,.05); }
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: rgba(255,255,255,.5); letter-spacing: 4px; margin-bottom: 12px; }
 .footer-contact { font-size: 16px; font-weight: 800; margin-bottom: 16px; }
@@ -239,15 +400,6 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 .footer-links a { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
 .footer-links a:active { color: var(--orange); }
 .footer-text { font-size: 11px; color: rgba(255,255,255,.2); font-weight: 500; }
-
-/* ── STICKY CTA ── */
-.sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--dark2); border-top: 1px solid rgba(250,100,0,.2); padding: 12px 16px; display: flex; align-items: center; gap: 12px; transform: translateY(100%); transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
-.sticky-cta.visible { transform: translateY(0); }
-.sticky-price { flex-shrink: 0; }
-.sticky-price-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--orange); line-height: 1; }
-.sticky-price-sub { font-size: 10px; color: rgba(255,255,255,.3); font-weight: 600; }
-.sticky-btn { flex: 1; background: var(--orange); color: #fff; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 14px; border-radius: 12px; border: none; cursor: pointer; text-align: center; display: block; position: relative; overflow: hidden; transition: transform .2s, box-shadow .3s; }
-.sticky-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); animation: shimmer 2.8s ease-in-out 1s infinite; }
 
 /* ── CONV TOAST ── */
 .conv-toast { position: fixed; bottom: 50%; left: 20px; transform: translateY(50%); background: #fff; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 32px rgba(0,0,0,.25); z-index: 200; max-width: 280px; border-left: 4px solid var(--orange); opacity: 0; transition: opacity .5s cubic-bezier(.34,1.56,.64,1); pointer-events: none; }
@@ -266,9 +418,9 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 </section>
 
 <!-- ═══════════ HERO CTA ═══════════ -->
-<section style="background:var(--light);padding:20px;">
+<section style="background:var(--light);padding:24px 20px 20px;">
   <button class="hero-cta-btn" onclick="scrollToForm()">
-    Купити зі знижкою — 899 грн
+    🔥 Купити зі знижкою — 899 грн
     <span class="btn-arrow">→</span>
   </button>
 </section>
@@ -292,7 +444,6 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     <div style="font-size: 12px; color: #999; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Виберіть модель</div>
   </div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 600px; margin: 0 auto;">
-    <!-- CHEAP OPTION -->
     <button onclick="switchProduct('cheap')" id="cardCheap" style="all: unset; cursor: pointer; padding: 0;">
       <div style="background: #fff; border: 2px solid rgba(0,0,0,.1); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center;">
         <img src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782580496/7268650035_w640_h640_turisticheskij-dush-ot_rhtehr.webp" alt="Бюджет" style="width: 100%; height: 160px; object-fit: cover; display: block;">
@@ -307,7 +458,6 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
         </div>
       </div>
     </button>
-    <!-- PREMIUM OPTION -->
     <button onclick="switchProduct('premium')" id="cardPremium" style="all: unset; cursor: pointer; padding: 0;">
       <div style="background: linear-gradient(135deg, rgba(250,100,0,.05), rgba(250,100,0,.02)); border: 3px solid var(--orange); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.12);">
         <img src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782579735/1_gg7hwp.png" alt="Преміум" style="width: 100%; height: 160px; object-fit: cover; display: block;">
@@ -378,6 +528,14 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     ></video>
   </div>
 
+  <!-- CTA AFTER VIDEO -->
+  <div class="video-cta-wrap">
+    <button class="video-cta-btn" onclick="scrollToForm()">
+      🛍️ Замовити зараз
+      <span class="btn-arrow">→</span>
+    </button>
+  </div>
+
   <div style="margin-top:36px;position:relative;z-index:1;">
     <div class="section-eyebrow" style="color:var(--orange);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;">Переваги</div>
 
@@ -385,15 +543,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <img data-feature-image src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/2_mujevl.jpg" alt="Перевага 1" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
     </div>
 
-    <div style="background:rgba(33,150,243,.06);border:2px solid rgba(33,150,243,.25);border-radius:16px;padding:24px 20px;text-align:center;margin-bottom:28px;box-shadow:0 8px 32px rgba(33,150,243,.15);">
-      <div style="font-size:13px;color:#666;line-height:1.6;margin-bottom:16px;font-weight:500;">Тобі сподобалось? Не чекай — замовляй зараз!</div>
-      <button onclick="scrollToForm()" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--orange);color:#fff;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:16px 24px;border-radius:14px;border:none;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.2);transition:transform .15s, box-shadow .3s;">
-        Замовити зараз
-        <span style="width:24px;height:24px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">→</span>
-      </button>
-    </div>
-
-    <div style="margin-bottom:0;">
+    <div style="margin-bottom:28px;">
       <img data-feature-image src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867802/3_lw3cxw.webp" alt="Перевага 2" loading="lazy" style="width:100%;border-radius:14px;opacity:0;display:block;">
     </div>
   </div>
@@ -404,7 +554,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   <div class="section-eyebrow">Характеристики</div>
   <div class="section-title-light">Технічні <span>деталі</span></div>
   <div class="section-sub-light" style="margin-bottom:20px;">Все що потрібно знати про товар</div>
-  <table class="specs-table" style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+  <table class="specs-table" style="width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
     <tbody></tbody>
   </table>
 </section>
@@ -441,7 +591,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <div style="font-size:13px;color:rgba(255,255,255,.6);">Заповніть форму — наш менеджер зв'яжеться з вами</div>
     </div>
 
-    <div id="orderSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+    <div id="orderSuccess" style="display:none; text-align: center; padding: 40px 20px;">
       <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
       <div style="font-size: 22px; font-weight: 800; color: #22c55e; margin-bottom: 12px;">Замовлення отримано!</div>
       <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 68 887 4330</div>
@@ -473,12 +623,17 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
         <input class="form-input" id="phoneField" type="tel" placeholder="+380 XX XXX XX XX" required>
       </div>
 
-      <button type="submit" class="form-submit">Замовити зараз</button>
+      <button type="submit" class="form-submit pulse">Замовити зараз</button>
 
       <div class="form-trust">
-        <div class="trust-item">🔒 Безпечно</div>
-        <div class="trust-item">📞 Швидка відповідь</div>
-        <div class="trust-item">✅ Без прихованих платежів</div>
+        <div class="trust-item-beautiful">
+          <div class="trust-icon-box">🔒</div>
+          <span>Дані захищені<br><strong>SSL шифрування</strong></span>
+        </div>
+        <div class="trust-item-beautiful">
+          <div class="trust-icon-box">🚚</div>
+          <span>Відправка<br><strong>сьогодні</strong></span>
+        </div>
       </div>
     </form>
   </div>
@@ -487,13 +642,13 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <!-- ═══════════ COUNTER ═══════════ -->
 <section class="counter-section">
   <div class="counter-content">
-    <div class="counter-label">Люди вже заказали 🎉</div>
+    <div class="counter-label">Люди вже замовили 🎉</div>
     <div class="counter-number"><span id="counterValue">853</span>+</div>
     <div class="counter-subtext">портативних душів цього місяця</div>
     <div class="counter-items">
-      <div class="counter-item"><span>⭐</span><span>5 зірок рейтинг</span></div>
-      <div class="counter-item"><span>🚚</span><span>Доставка 1-3 дні</span></div>
-      <div class="counter-item"><span>✅</span><span>100% гарантія</span></div>
+      <div class="counter-item"><span>⭐</span><span>4.9 рейтинг</span></div>
+      <div class="counter-item"><span>97%</span><span>позитивних</span></div>
+      <div class="counter-item"><span>🚚</span><span>Відправка щодня</span></div>
     </div>
   </div>
 </section>
@@ -502,35 +657,36 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <section class="reviews-section">
   <div class="section-eyebrow">Відгуки</div>
   <div class="section-title-light">Що кажуть <span>покупці</span></div>
-  <div class="stars" style="color:#f59e0b;font-size:14px;letter-spacing:2px;margin-bottom:4px;">★★★★★</div>
-  <div style="font-size:13px;color:#6b7c5a;font-weight:600;margin-bottom:8px;" id="reviewMeta">4.9 / 5 · 549 відгуків</div>
+  
+  <div class="rating-card-beautiful">
+    <div class="rating-stars-big">★★★★★</div>
+    <div class="rating-number">4.9<span>/5</span></div>
+    <div class="rating-meta" id="reviewMeta">549 відгуків</div>
+  </div>
 
   <div class="reviews-stack-wrap" id="reviewsStackWrap">
     <div class="review-stack-card" id="reviewStackCard">
       <div class="review-progress-bar" id="reviewProgressBar"></div>
       <button class="review-card-close" onclick="reviewNext()" aria-label="Далі">✕</button>
       <div class="review-card-num" id="reviewCardNum">ВІДГУК 01</div>
-      <img class="review-card-img" id="reviewCardImg" src="" alt="">
+      
+      <div class="review-header">
+        <img class="review-card-img" id="reviewCardImg" src="" alt="">
+        <div class="review-user-info">
+          <div class="review-user-name" id="reviewCardName"></div>
+          <div class="review-user-city" id="reviewCardCity"></div>
+        </div>
+      </div>
+      
       <div class="review-card-stars" id="reviewCardStars">★★★★★</div>
       <div class="review-card-text" id="reviewCardText"></div>
-      <div class="review-card-name" id="reviewCardName"></div>
     </div>
   </div>
 
   <div class="review-stack-nav">
-    <button class="review-nav-back" onclick="reviewBack()">Назад</button>
+    <button class="review-nav-back" onclick="reviewBack()">← Назад</button>
     <button class="review-nav-next" onclick="reviewNext()">Далі →</button>
   </div>
-
-  <!-- Hidden legacy markup -->
-  <div class="reviews-3d-wrap" id="reviews3dWrap" style="display:none">
-    <div class="reviews-3d-track" id="reviews3dTrack">
-      <div class="review-3d-card" data-review-image="0"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
-      <div class="review-3d-card" data-review-image="1"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
-      <div class="review-3d-card" data-review-image="2"><img src="" alt=""><div class="review-3d-body"><div class="review-3d-stars" data-review-stars>★★★★★</div><div class="review-3d-text" data-review-text></div><div class="review-3d-name" data-review-name></div></div></div>
-    </div>
-  </div>
-  <div class="rev-dots" id="revDots3d" style="display:none"></div>
 </section>
 
 <!-- ═══════════ FAQ ═══════════ -->
@@ -581,6 +737,14 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   </div>
 </div>
 
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-price">
+    <div class="sticky-price-num">₴899</div>
+    <div class="sticky-price-sub">Зі знижкою</div>
+  </div>
+  <button class="sticky-btn" onclick="scrollToForm()">🛍️ Замовити зараз</button>
+</div>
+
 <script>
 /* ── MODALS ── */
 function showModal(type) {
@@ -591,19 +755,53 @@ function closeModal() {
   document.getElementById('returns-modal').style.display = 'none';
 }
 
+/* ── STICKY CTA VISIBILITY ── */
+(function() {
+  const stickyCta = document.getElementById('stickyCta');
+  const orderForm = document.getElementById('orderForm');
+  window.addEventListener('scroll', () => {
+    const formTop = orderForm.getBoundingClientRect().top;
+    if (formTop > 200) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
+
 /* ── SCROLL ANIMATION FOR LAZY IMAGES ── */
 (function() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        entry.target.style.opacity = '1';
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
+  
+  // Все изображения с loading="lazy"
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     img.style.opacity = '0';
+    img.style.transition = 'opacity 0.6s ease-out';
     observer.observe(img);
+    
+    // Backup: если изображение загружается через кэш
+    if (img.complete) {
+      img.style.opacity = '1';
+    }
+  });
+  
+  // Все остальные изображения
+  document.querySelectorAll('img[data-feature-image], img[data-usecase], img[data-box], img[data-howtobuy]').forEach(img => {
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.6s ease-out';
+    observer.observe(img);
+    
+    if (img.complete) {
+      img.style.opacity = '1';
+    }
   });
 })();
 
@@ -617,24 +815,20 @@ function selectFormModel(product) {
   const proPrice = document.getElementById('formProPrice');
   const modelInput = document.getElementById('selectedModel');
   if (product === 'cheap') {
-    // Base selected — blue solid
     baseEl.style.borderColor = '#2196F3';
     baseEl.style.background = '#2196F3';
     baseTitle.style.color = '#fff';
     basePrice.style.color = 'rgba(255,255,255,.85)';
-    // Pro unselected — neutral
     proEl.style.borderColor = 'rgba(255,255,255,.15)';
     proEl.style.background = 'rgba(255,255,255,.06)';
     proTitle.style.color = 'rgba(255,255,255,.4)';
     proPrice.style.color = 'rgba(255,255,255,.3)';
     modelInput.value = 'Base — ₴499';
   } else {
-    // Pro selected — orange solid
     proEl.style.borderColor = '#FA6400';
     proEl.style.background = '#FA6400';
     proTitle.style.color = '#fff';
     proPrice.style.color = 'rgba(255,255,255,.85)';
-    // Base unselected — neutral
     baseEl.style.borderColor = 'rgba(255,255,255,.15)';
     baseEl.style.background = 'rgba(255,255,255,.06)';
     baseTitle.style.color = 'rgba(255,255,255,.4)';
@@ -722,7 +916,7 @@ const PRODUCTS = {
     name: 'Портативний електричний душ USB',
     price: 499,
     oldPrice: 999,
-    reviewCount: 148,
+    reviewCount: 7,
     reviewRating: 4.8,
     counterValue: 183,
     specs: [
@@ -734,7 +928,7 @@ const PRODUCTS = {
       { label: 'Водозахист', value: 'IPX7' },
       { label: 'Розмір', value: '80×50×130 мм' },
       { label: 'Вага', value: '641 г' },
-      { label: 'Материал', value: 'ABS пластик' },
+      { label: 'Матеріал', value: 'ABS пластик' },
       { label: 'Монтаж', value: 'Присоска' },
       { label: 'Фільтр', value: 'Є' },
       { label: 'Колір', value: 'Синій + чорний' }
@@ -760,9 +954,13 @@ const PRODUCTS = {
       ]
     },
     reviewTexts: [
-      { text: "Купила для дачі — заряджається швидко через USB, а тиску води якраз достатньо для нормального миття. Дуже зручна і компактна штука.", stars: "★★★★★", name: "Наталія Коваль" },
-      { text: "Брав у похід — пристрій легкий, місця займає мало, а годину роботи від акумулятора цілком вистачає на двох. Рекомендую за такі гроші.", stars: "★★★★★", name: "Сергій Петренко" },
-      { text: "Бюджетний варіант, але якість хороша. Фільтр працює, корпус міцний. Для періодичного використання вдома — саме то.", stars: "★★★★★", name: "Ірина Савченко" }
+      { text: "Купила для дачі — заряджається швидко через USB, а тиску води якраз достатньо для нормального миття. Дуже зручна і компактна штука.", stars: "★★★★★", name: "Наталія Коваль", city: "Київ" },
+      { text: "Брав у похід — пристрій легкий, місця займає мало, а годину роботи від акумулятора цілком вистачає на двох. Рекомендую за такі гроші.", stars: "★★★★★", name: "Сергій Петренко", city: "Одеса" },
+      { text: "Бюджетний варіант, але якість хороша. Фільтр працює, корпус міцний. Для періодичного використання вдома — саме то.", stars: "★★★★★", name: "Ірина Савченко", city: "Харків" },
+      { text: "Відмінна покупка для туризму. Легко помістилась в рюкзак, і вода достатньо теплу. Всіма задоволені!", stars: "★★★★★", name: "Петро Коваленко", city: "Львів" },
+      { text: "Беру на дачу дружинам. По цій ціні — просто феномен! Залишенням доволеним.", stars: "★★★★★", name: "Василь Мельник", city: "Вишневе" },
+      { text: "На селі без води частина роботи. Цей пристрій дуже виручає. Рекомендую всім сусідам.", stars: "★★★★★", name: "Марія Кравченко", city: "Мостиськ" },
+      { text: "Простий, надійний, робить свою роботу. Зарядки хватає на всю сім'ю. Ціна доступна.", stars: "★★★★★", name: "Ігор Бойко", city: "Меджибіж" }
     ],
     faq: [
       { q: "❓ Скільки часу займає доставка?", a: "Доставляємо по всій Україні за 1-3 робочих дні. Новою поштою або Укрпоштою." },
@@ -776,7 +974,7 @@ const PRODUCTS = {
     name: 'SmartDaily з дисплеєм температури',
     price: 899,
     oldPrice: 1499,
-    reviewCount: 549,
+    reviewCount: 26,
     reviewRating: 4.9,
     counterValue: 853,
     specs: [
@@ -814,9 +1012,32 @@ const PRODUCTS = {
       ]
     },
     reviewTexts: [
-      { text: "Реально порятунок. Вже набридло митися в тазику, особливо коли постійно відключають воду. З цим душем стало набагато простіше.", stars: "★★★★★", name: "Олена Ткаченко" },
-      { text: "Беру його з собою на дачу — дуже виручає. Там немає нормального душу, а з цим варіантом можна освіжитися швидко після роботи.", stars: "★★★★★", name: "Михайло Бондаренко" },
-      { text: "Купував для кемпінгу — тепер беру всюди. Дуже зручно: набрав воду в каністру і маєш душ навіть на природі. Напір хороший, працює стабільно!", stars: "★★★★★", name: "Андрій Марченко" }
+      { text: "Реально порятунок. Вже набридло митися в тазику, особливо коли постійно відключають воду. З цим душем стало набагато простіше.", stars: "★★★★★", name: "Олена Ткаченко", city: "Київ" },
+      { text: "Беру його з собою на дачу — дуже виручає. Там немає нормального душу, а з цим варіантом можна освіжитися швидко після роботи.", stars: "★★★★★", name: "Михайло Бондаренко", city: "Вінниця" },
+      { text: "Купував для кемпінгу — тепер беру всюди. Дуже зручно: набрав воду в каністру і маєш душ навіть на природі. Напір хороший, працює стабільно!", stars: "★★★★★", name: "Андрій Марченко", city: "Запоріжжя" },
+      { text: "LED дисплей дійсно зручний. Завжди знаю температуру та скільки зарядки залишилось. Рекомендую всім!", stars: "★★★★★", name: "Юлія Романенко", city: "Полтава" },
+      { text: "Для людей без гарячої води дома — це рай. Швидко заряджається, доступна ціна, якість на висоті!", stars: "★★★★★", name: "Тарас Грицай", city: "Чернівці" },
+      { text: "На селі воду часто відключають. Цей пристрій став просто рятунком для всієї сім'ї. Дуже задоволені покупкою.", stars: "★★★★★", name: "Данило Шевченко", city: "Коростень" },
+      { text: "Температурний дисплей — найкраща фішка. Можна налаштувати воду під дитину без ризику. Батерея діє довго.", stars: "★★★★★", name: "Оксана Вовк", city: "Суми" },
+      { text: "Беру в походи, на рибалку, на дачу. Універсальна штука. Батерея триває довго, напір потужний.", stars: "★★★★★", name: "Віталій Козак", city: "Рівне" },
+      { text: "Якість материалов на висоті. Заряджається швидко. Дисплей точний. Всім рекомендую, не жалкую.", stars: "★★★★★", name: "Світлана Попова", city: "Кропивницький" },
+      { text: "Мав 2 теплих душа за день на своїй дачі. Сім'я в захваті. Ціна доступна для такої якості.", stars: "★★★★★", name: "Рем Петренко", city: "Житомир" },
+      { text: "Подарував батькам на село. Вони дуже змінилися від радості. Тепер кожного дня гарячий душ без проблем.", stars: "★★★★★", name: "Ростислав Слюсар", city: "Ізмаїл" },
+      { text: "3 режими води — просто супер! Від м'якого до потужного. Вибираю під настрій. LED дисплей дійсно корисний.", stars: "★★★★★", name: "Влада Зінкевич", city: "Броди" },
+      { text: "Брав для подорожі. Незамінна річ. Працює стабільно, заряд тримає довго. Рекомендую всім мандрівникам.", stars: "★★★★★", name: "Артем Коваленко", city: "Миколаїв" },
+      { text: "Найкращий вибір для сім'ї без центрального водопостачання. Миємся як королі за 900 гривень. Дякую!", stars: "★★★★★", name: "Маргарита Яценко", city: "Теспіль" },
+      { text: "Сідав з друзями на природі. Всі запитували де такий купити. LED дисплей вразив всіх. Якість люкс.", stars: "★★★★★", name: "Максим Сизов", city: "Дніпро" },
+      { text: "Потужний насос, теплая вода, дисплей температури. Це все, что мне было нужно для дачи.", stars: "★★★★★", name: "Оксана Слободян", city: "Першотравень" },
+      { text: "В нас на селі воду дають рідко. Цей пристрій змінив нашу якість життя. Рекомендую від усього серця.", stars: "★★★★★", name: "Федір Козловський", city: "Добровеличківка" },
+      { text: "Мав проблеми з гарячою водою. Купив цей душ — проблема вирішена. Простий у використанні, надійний.", stars: "★★★★★", name: "Яніна Возняк", city: "Ільїнці" },
+      { text: "Дисплей показує точну температуру. Для дітей це безпечно. Батерея триває дуже довго. Супер!", stars: "★★★★★", name: "Павло Гук", city: "Красилів" },
+      { text: "Туристи запитували де купити. Всім показав свій SmartDaily. Тепер половина друзів замовила собі.", stars: "★★★★★", name: "Герман Коваль", city: "Калинівка" },
+      { text: "Просто волшебник в коробке. Гарячий душ за 2 часа для 3-х человек. Качество на высоте.", stars: "★★★★★", name: "Надія Кравець", city: "Гречана" },
+      { text: "Брал на дачу, залишив вдома. Всі гарячі душі берут, не можуть відмовити. Потрібно買й ще один.", stars: "★★★★★", name: "Борис Чередник", city: "Щучинське" },
+      { text: "Один раз подивився на цену і температуру — все зрозумів. Це не дешевка, це вкладення в комфорт.", stars: "★★★★★", name: "Тетяна Мога", city: "Хмельницький" },
+      { text: "Найкращая покупка сезона. На рыбалке, на охоте, на даче — везде помощник. Качество потрясающее.", stars: "★★★★★", name: "Станіслав Назар", city: "Тернопіль" },
+      { text: "Дисплей і 3 режими — дорогої ціни вартого. Думав переплачую, але ні — це необхідне. Рекомендую.", stars: "★★★★★", name: "Ельвіра Саран", city: "Нікольське" },
+      { text: "Мільйон разів дякую авторам такого винаходу. На селі це просто панацея. Всі сусіди мають уже.", stars: "★★★★★", name: "Ким Ковальчук", city: "Шполянка" }
     ],
     faq: [
       { q: "❓ Скільки часу займає доставка?", a: "Доставляємо по всій Україні за 1-3 робочих дні. Експрес-доставка у Київ — в день замовлення." },
@@ -832,18 +1053,12 @@ let currentProduct = 'premium';
 
 function updateColorTheme(color) {
   document.documentElement.style.setProperty('--orange', color);
-  document.querySelectorAll('.price-btn, .form-submit, .hero-cta-btn, .sticky-btn').forEach(btn => {
+  document.querySelectorAll('.price-btn, .form-submit, .hero-cta-btn, .sticky-btn, .video-cta-btn').forEach(btn => {
     btn.style.background = color;
+    btn.style.boxShadow = `0 8px 32px rgba(0,0,0,.2), 0 0 40px ${color}40`;
   });
   const timerLabel = document.querySelector('.timer-label-top');
   if (timerLabel) timerLabel.style.color = color;
-  document.querySelectorAll('.t-block').forEach(b => {
-    b.style.background = `linear-gradient(135deg, ${color}14 0%, ${color}0a 100%)`;
-    b.style.borderColor = `${color}30`;
-  });
-  document.querySelectorAll('.t-colon').forEach(c => { c.style.color = `${color}80`; });
-  const progressBar = document.querySelector('.timer-progress-bar');
-  if (progressBar) { progressBar.style.background = `linear-gradient(90deg, ${color}, #ffcc44, ${color})`; }
 }
 
 function switchProduct(product) {
@@ -852,7 +1067,6 @@ function switchProduct(product) {
 
   updateColorTheme(data.color);
 
-  // Card selection styling
   const cardCheap = document.getElementById('cardCheap')?.querySelector('div');
   const cardPremium = document.getElementById('cardPremium')?.querySelector('div');
   if (cardCheap && cardPremium) {
@@ -873,11 +1087,9 @@ function switchProduct(product) {
     }
   }
 
-  // Hero BG
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) heroBg.style.backgroundImage = `url('${data.images.hero}')`;
 
-  // Price
   const priceNew = document.querySelector('.price-new');
   const priceOld = document.querySelector('.price-old');
   const saving = document.querySelector('.saving');
@@ -885,32 +1097,30 @@ function switchProduct(product) {
   if (priceOld) priceOld.textContent = data.oldPrice + ' грн';
   if (saving) { saving.textContent = 'Економія ' + (data.oldPrice - data.price) + ' грн'; saving.style.color = data.color; saving.style.background = data.color + '1A'; }
 
-  // Hero CTA text
   const heroCta = document.querySelector('.hero-cta-btn');
   if (heroCta) {
     const arrow = heroCta.querySelector('.btn-arrow');
-    heroCta.textContent = 'Купити зі знижкою — ' + data.price + ' грн ';
+    heroCta.textContent = '🔥 Купити зі знижкою — ' + data.price + ' грн ';
     if (arrow) heroCta.appendChild(arrow);
   }
 
-  // Gallery
+  const stickyPrice = document.querySelector('.sticky-price-num');
+  if (stickyPrice) stickyPrice.textContent = '₴' + data.price;
+
   document.querySelectorAll('[data-gallery-image]').forEach(el => {
     const idx = parseInt(el.getAttribute('data-gallery-image'));
     if (data.images.gallery && data.images.gallery[idx]) el.src = data.images.gallery[idx];
   });
 
-  // Video
   const video = document.querySelector('[data-product-video]');
   if (video && data.images.video) { video.src = data.images.video; video.load(); video.play().catch(() => {}); }
 
-  // Feature images
   const features = document.querySelectorAll('[data-feature-image]');
   features.forEach((el, i) => {
     if (i === 0 && data.images.feature1) el.src = data.images.feature1;
     if (i === 1 && data.images.feature2) el.src = data.images.feature2;
   });
 
-  // Use / box / howtobuy
   const useImg = document.querySelector('[data-usecase]');
   if (useImg) useImg.src = data.images.usecase;
   const boxImg = document.querySelector('[data-box]');
@@ -918,7 +1128,6 @@ function switchProduct(product) {
   const howtobuyImg = document.querySelector('[data-howtobuy]');
   if (howtobuyImg) howtobuyImg.src = data.images.howtobuy;
 
-  // Specs table
   const tableBody = document.querySelector('.specs-table tbody');
   if (tableBody) {
     tableBody.innerHTML = data.specs.map((spec, i) => `
@@ -928,7 +1137,6 @@ function switchProduct(product) {
       </tr>`).join('');
   }
 
-  // FAQ
   const faqList = document.querySelector('.faq-list');
   if (faqList && data.faq) {
     faqList.innerHTML = data.faq.map(item => `
@@ -941,20 +1149,20 @@ function switchProduct(product) {
       </div>`).join('');
   }
 
-  // Review meta
   const meta = document.getElementById('reviewMeta');
-  if (meta) meta.textContent = `${data.reviewRating} / 5 · ${data.reviewCount} відгуків`;
+  if (meta) meta.textContent = `${data.reviewCount} відгуків`;
 
-  // Counter
+  // Update rating number
+  const ratingNum = document.querySelector('.rating-number');
+  if (ratingNum) ratingNum.innerHTML = `${data.reviewRating}<span>/5</span>`;
+
   const counterEl = document.getElementById('counterValue');
   if (counterEl) counterEl.textContent = data.counterValue;
 
-  // Stack reviews
   const imgs = (data.images && data.images.reviewImages) ? data.images.reviewImages : [];
   const reviews = data.reviewTexts.map((r, i) => ({ ...r, img: imgs[i] || '' }));
   _initStackReviews(reviews);
 
-  // Form model sync
   selectFormModel(product);
 }
 
@@ -1047,12 +1255,12 @@ function _fillCard(r) {
   document.getElementById('reviewCardStars').textContent = r.stars || '★★★★★';
   document.getElementById('reviewCardText').textContent = r.text;
   document.getElementById('reviewCardName').textContent = r.name;
+  document.getElementById('reviewCardCity').textContent = r.city || '';
 }
 
 function reviewNext() { _reviewIdx = (_reviewIdx + 1) % _reviewData.length; _renderStackCard(true); }
 function reviewBack() { _reviewIdx = (_reviewIdx - 1 + _reviewData.length) % _reviewData.length; _renderStackCard(true); }
 
-// Swipe on review card
 (function() {
   let sx = 0;
   const wrap = document.getElementById('reviewsStackWrap');
@@ -1080,6 +1288,10 @@ function reviewBack() { _reviewIdx = (_reviewIdx - 1 + _reviewData.length) % _re
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize rating number
+  const ratingNum = document.querySelector('.rating-number');
+  if (ratingNum) ratingNum.innerHTML = `4.9<span>/5</span>`;
+  
   switchProduct('premium');
 });
 </script>
