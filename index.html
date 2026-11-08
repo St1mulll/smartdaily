@@ -594,7 +594,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     <div id="orderSuccess" style="display:none; text-align: center; padding: 40px 20px;">
       <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
       <div style="font-size: 22px; font-weight: 800; color: #22c55e; margin-bottom: 12px;">Замовлення отримано!</div>
-      <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 68 887 4330</div>
+      <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 75 683 5255</div>
     </div>
 
     <form id="orderFormElement" onsubmit="submitOrder(event)">
@@ -701,7 +701,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">SmartDaily</div>
-  <div class="footer-contact"><a href="tel:+380688874330">☎️ +380 68 887 4330</a></div>
+  <div class="footer-contact"><a href="tel:+380756835255">☎️ +380 75 683 5255</a></div>
   <div class="footer-links">
     <a href="#" onclick="showModal('privacy')">📋 Політика конфіденціальності</a>
     <a href="#" onclick="showModal('returns')">↩️ Повернення і обмін</a>
@@ -719,7 +719,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <p style="margin-bottom:12px;"><strong>Які дані ми збираємо:</strong> Ім'я, номер телефону, адреса доставки, інформація про замовлення.</p>
       <p style="margin-bottom:12px;"><strong>Як ми їх використовуємо:</strong> Для обробки замовлень, доставки товару, зв'язку з вами та поліпшення сервісу.</p>
       <p style="margin-bottom:12px;"><strong>Захист даних:</strong> Ми вживаємо всіх необхідних заходів для захисту ваших даних від несанкціонованого доступу.</p>
-      <p><strong>Контакт:</strong> +380688874330</p>
+      <p><strong>Контакт:</strong> +380756835255</p>
     </div>
   </div>
 </div>
@@ -732,7 +732,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <p style="margin-bottom:12px;"><strong>14 днів на повернення:</strong> Якщо товар вам не підходить, ви можете повернути його протягом 14 днів з дати отримання.</p>
       <p style="margin-bottom:12px;"><strong>Умови повернення:</strong> Товар має бути невжитий, в оригінальній упаковці та з документами.</p>
       <p style="margin-bottom:12px;"><strong>Повернення грошей:</strong> Протягом 5-7 днів після отримання товару.</p>
-      <p><strong>Свяжіться з нами:</strong> +380688874330</p>
+      <p><strong>Свяжіться з нами:</strong> +380756835255</p>
     </div>
   </div>
 </div>
@@ -957,7 +957,7 @@ const PRODUCTS = {
       { q: "❓ Скільки часу займає доставка?", a: "Доставляємо по всій Україні за 1-3 робочих дні. Новою поштою або Укрпоштою." },
       { q: "💧 На скільки хватає батереї?", a: "До 60 хвилин безперервної роботи. Заряджається за 2 години через USB." },
       { q: "🎒 Підходить для туризму?", a: "Так! Компактний і легкий — ідеальний для походів, кемпінгу, дачі." },
-      { q: "💰 Як замовити?", a: "Натисніть кнопку «Купити» або зателефонуйте: +380 68 887 4330." }
+      { q: "💰 Як замовити?", a: "Натисніть кнопку «Купити» або зателефонуйте: +380 75 683 5255." }
     ]
   },
   premium: {
@@ -1035,7 +1035,7 @@ const PRODUCTS = {
       { q: "💧 На скільки хватає батереї?", a: "До 190 хвилин безперервної роботи. Заряджається за 2-3 години через USB-C (VOOC швидка зарядка)." },
       { q: "🌡️ Як працює дисплей температури?", a: "LED дисплей показує температуру води в реальному часі та рівень заряду батареї. Діапазон: 0–80°C." },
       { q: "🔒 Чи безпечно для дітей?", a: "Так! Має термозахист з кольоровою індикацією: синій — холодна, зелений — тепла, червоний — гаряча." },
-      { q: "💰 Як замовити?", a: "Натисніть кнопку «Купити» або зателефонуйте: +380 68 887 4330." }
+      { q: "💰 Як замовити?", a: "Натисніть кнопку «Купити» або зателефонуйте: +380 75 683 5255." }
     ]
   }
 };
@@ -1201,7 +1201,7 @@ function submitOrder(event) {
   .catch(error => {
     submitBtn.textContent = 'Замовити зараз';
     submitBtn.disabled = false;
-    alert('⚠️ ' + error.message + '\n\nБудь ласка, подзвоніть: +380 68 887 4330\n\nВаші дані:\n📝 ' + name + '\n📞 ' + phone);
+    alert('⚠️ ' + error.message + '\n\nБудь ласка, подзвоніть: +380 75 683 5255\n\nВаші дані:\n📝 ' + name + '\n📞 ' + phone);
   });
 }
 
