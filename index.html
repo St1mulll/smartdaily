@@ -1165,38 +1165,47 @@ function submitOrder(event) {
   const name = nameField.value.trim();
   const phone = phoneField.value.trim();
   if (!name || !phone) { alert('Заповніть всі обов\'язкові поля!'); return; }
+
   submitBtn.disabled = true;
   submitBtn.textContent = 'Відправляємо...';
-  const BOT_TOKEN = '8762846621:AAG7rAXiKGEQo_0LlTvUnbEfiybtqirSLng';
-  const CHAT_ID = '353934036';
+
   const model = document.getElementById('selectedModel')?.value || 'не вказано';
-  const message = `🛒 <b>Нове замовлення SmartDaily!</b>\n\n📦 <b>Модель:</b> ${model}\n👤 <b>Ім'я:</b> ${name}\n📞 <b>Телефон:</b> ${phone}\n\n⏰ <i>${new Date().toLocaleString('uk-UA')}</i>`;
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+  const price = currentProduct === 'premium' ? 899 : 499;
+
+  // The bot token is kept on the Vercel server, never in this public HTML.
+  fetch('/api/order', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
+    body: JSON.stringify({
+      name,
+      phone,
+      model,
+      price,
+      site: 'SmartDaily — Портативний душ'
+    })
   })
-  .then(r => r.json())
-  .then(data => {
-    if (data.ok) {
-      const price = currentProduct === 'premium' ? 899 : 499;
-      if (typeof fbq === 'function') fbq('track', 'Purchase', { value: price, currency: 'UAH' });
-      submitBtn.textContent = '✅ Замовлення отримано!';
-      submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-      const successDiv = document.getElementById('orderSuccess');
-      if (successDiv) successDiv.style.display = 'block';
-      document.getElementById('orderFormElement').style.display = 'none';
-      setTimeout(() => {
-        document.getElementById('orderFormElement').reset();
-        document.getElementById('orderFormElement').style.display = 'block';
-        if (successDiv) successDiv.style.display = 'none';
-        submitBtn.textContent = 'Замовити зараз';
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-      }, 4000);
-    } else {
-      throw new Error(data.description || 'Невідома помилка');
+  .then(async response => {
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || data.description || 'Не вдалося відправити замовлення');
     }
+    return data;
+  })
+  .then(() => {
+    if (typeof fbq === 'function') fbq('track', 'Purchase', { value: price, currency: 'UAH' });
+    submitBtn.textContent = '✅ Замовлення отримано!';
+    submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+    const successDiv = document.getElementById('orderSuccess');
+    if (successDiv) successDiv.style.display = 'block';
+    document.getElementById('orderFormElement').style.display = 'none';
+    setTimeout(() => {
+      document.getElementById('orderFormElement').reset();
+      document.getElementById('orderFormElement').style.display = 'block';
+      if (successDiv) successDiv.style.display = 'none';
+      submitBtn.textContent = 'Замовити зараз';
+      submitBtn.style.background = '';
+      submitBtn.disabled = false;
+    }, 4000);
   })
   .catch(error => {
     submitBtn.textContent = 'Замовити зараз';
