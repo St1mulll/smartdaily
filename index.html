@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>SmartDaily — Портативний Душ</title>
 
 <!-- Meta Pixel Code -->
@@ -39,17 +40,24 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(--text); overflow-x: hidden; }
 
 /* ── HERO ── */
-.hero { position: relative; width: 100%; height: 75vh; min-height: 75dvh; overflow: hidden; display: flex; align-items: flex-end; padding-top: 40px; }
+.hero { position: relative; width: 100%; min-height: 75vh; height: 75dvh; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 40px 0; background: #0a0f0c; }
+.hero::before {
+  content: ''; position: absolute; inset: -12%;
+  background: url('https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp') center/cover no-repeat;
+  filter: blur(26px) brightness(.45);
+  z-index: 0;
+}
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp') center/cover no-repeat;
-  z-index: 0;
+  background: url('https://res.cloudinary.com/dyb7dyrme/image/upload/v1782867801/1_zuxvzi.webp') center/contain no-repeat;
+  z-index: 1;
   will-change: transform;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.25) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.20) 100%);
   z-index: 1;
+  pointer-events: none;
 }
 .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 20px 24px; animation: slideUp 0.8s ease-out; }
 @keyframes slideUp {
@@ -156,6 +164,13 @@ body { font-family: 'Manrope', sans-serif; background: var(--light); color: var(
   gap: 16px;
 }
 @media (max-width: 640px) { .guarantee-block { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  #productSelector .mc-img { height: 118px !important; }
+  #productSelector .mc-body { padding: 10px 6px 12px !important; }
+  #productSelector .mc-title { font-size: 13px !important; }
+  #productSelector .mc-price { font-size: 18px !important; }
+  #productSelector .mc-specs { font-size: 10px !important; line-height: 1.4 !important; }
+}
 .guarantee-item-inline { 
   display: flex; 
   gap: 12px; 
@@ -397,8 +412,8 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 .footer-contact a { color: var(--orange); text-decoration: none; transition: opacity .2s; }
 .footer-contact a:active { opacity: .7; }
 .footer-links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-.footer-links a { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
-.footer-links a:active { color: var(--orange); }
+.footer-links a, .footer-links button { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; background: none; border: none; padding: 0; font-family: 'Manrope', sans-serif; cursor: pointer; }
+.footer-links a:active, .footer-links button:active { color: var(--orange); }
 .footer-text { font-size: 11px; color: rgba(255,255,255,.2); font-weight: 500; }
 
 /* ── CONV TOAST ── */
@@ -408,6 +423,10 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 .conv-toast-text { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.4; }
 .conv-toast-text strong { color: var(--orange); }
 .field-error { border-color: #ef4444 !important; }
+.consent-row { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 16px; cursor: pointer; }
+.consent-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--orange); flex-shrink: 0; }
+.consent-row span { font-size: 12px; line-height: 1.5; color: rgba(255,255,255,.55); }
+.consent-row a { color: var(--orange); text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -443,14 +462,14 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   <div style="max-width: 100%; text-align: center; margin-bottom: 24px;">
     <div style="font-size: 12px; color: #999; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Виберіть модель</div>
   </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 600px; margin: 0 auto;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 720px; margin: 0 auto;">
     <button onclick="switchProduct('cheap')" id="cardCheap" style="all: unset; cursor: pointer; padding: 0;">
       <div style="background: #fff; border: 2px solid rgba(0,0,0,.1); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center;">
-        <img src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782580496/7268650035_w640_h640_turisticheskij-dush-ot_rhtehr.webp" alt="Бюджет" style="width: 100%; height: 160px; object-fit: cover; display: block;">
-        <div style="padding: 12px 10px 14px;">
-          <div style="font-weight: 800; font-size: 15px; color: #2196F3; margin-bottom: 4px;">Base</div>
-          <div style="font-size: 22px; color: #2196F3; font-weight: 900; margin-bottom: 8px;">&#8372;499</div>
-          <div style="font-size: 11px; color: #666; line-height: 1.5;">
+        <img class="mc-img" src="https://res.cloudinary.com/dyb7dyrme/image/upload/v1782580496/7268650035_w640_h640_turisticheskij-dush-ot_rhtehr.webp" alt="Бюджет" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+        <div class="mc-body" style="padding: 12px 10px 14px;">
+          <div class="mc-title" style="font-weight: 800; font-size: 15px; color: #2196F3; margin-bottom: 4px;">Base</div>
+          <div class="mc-price" style="font-size: 22px; color: #2196F3; font-weight: 900; margin-bottom: 8px;">&#8372;499</div>
+          <div class="mc-specs" style="font-size: 11px; color: #666; line-height: 1.5;">
             &#8226; 1 режим<br>
             &#8226; 60 хв батерії<br>
             &#8226; IPX7 захист
@@ -460,13 +479,27 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
     </button>
     <button onclick="switchProduct('premium')" id="cardPremium" style="all: unset; cursor: pointer; padding: 0;">
       <div style="background: linear-gradient(135deg, rgba(250,100,0,.05), rgba(250,100,0,.02)); border: 3px solid var(--orange); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.12);">
-        <img src="https://res.cloudinary.com/dcqxvj3dv/image/upload/v1783809263/%D0%BF%D1%80%D0%B5%D0%BC%D1%96%D1%83%D0%BC_xu7lkn.webp" alt="Преміум" style="width: 100%; height: 160px; object-fit: cover; display: block;">
-        <div style="padding: 12px 10px 14px;">
-          <div style="font-weight: 800; font-size: 15px; color: var(--orange); margin-bottom: 4px;">&#11088; Pro</div>
-          <div style="font-size: 22px; color: var(--orange); font-weight: 900; margin-bottom: 8px;">&#8372;899</div>
-          <div style="font-size: 11px; color: #666; line-height: 1.5;">
+        <img class="mc-img" src="https://res.cloudinary.com/dcqxvj3dv/image/upload/v1783809263/%D0%BF%D1%80%D0%B5%D0%BC%D1%96%D1%83%D0%BC_xu7lkn.webp" alt="Преміум" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+        <div class="mc-body" style="padding: 12px 10px 14px;">
+          <div class="mc-title" style="font-weight: 800; font-size: 15px; color: var(--orange); margin-bottom: 4px;">&#11088; Pro</div>
+          <div class="mc-price" style="font-size: 22px; color: var(--orange); font-weight: 900; margin-bottom: 8px;">&#8372;899</div>
+          <div class="mc-specs" style="font-size: 11px; color: #666; line-height: 1.5;">
             &#8226; 3 режими<br>
             &#8226; 190 хв батерії<br>
+            &#8226; LED дисплей
+          </div>
+        </div>
+      </div>
+    </button>
+    <button onclick="switchProduct('ultra')" id="cardUltra" style="all: unset; cursor: pointer; padding: 0;">
+      <div style="background: #fff; border: 2px solid rgba(0,0,0,.1); border-radius: 16px; overflow: hidden; transition: all .3s; text-align: center;">
+        <img class="mc-img" src="assets/ultra.webp" alt="Ultra" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+        <div class="mc-body" style="padding: 12px 10px 14px;">
+          <div class="mc-title" style="font-weight: 800; font-size: 15px; color: #7C3AED; margin-bottom: 4px;">⚡ Ultra</div>
+          <div class="mc-price" style="font-size: 22px; color: #7C3AED; font-weight: 900; margin-bottom: 8px;">&#8372;1090</div>
+          <div class="mc-specs" style="font-size: 11px; color: #666; line-height: 1.5;">
+            &#8226; 3 режими<br>
+            &#8226; 250 хв батерії<br>
             &#8226; LED дисплей
           </div>
         </div>
@@ -552,7 +585,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
 <!-- ═══════════ SPECS ═══════════ -->
 <section class="specs-section">
   <div class="section-eyebrow">Характеристики</div>
-  <div class="section-title-ight">Технічні <span>деталі</span></div>
+  <div class="section-title-light">Технічні <span>деталі</span></div>
   <div class="section-sub-light" style="margin-bottom:20px;">Все що потрібно знати про товар</div>
   <table class="specs-table" style="width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
     <tbody></tbody>
@@ -597,31 +630,40 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <div style="font-size: 15px; color: #aaa; line-height: 1.6;">Наш менеджер зв'яжеться з вами найближчим часом.<br>📞 +380 75 683 5255</div>
     </div>
 
-    <form id="orderFormElement" onsubmit="submitOrder(event)">
+    <form id="orderFormElement" action="https://smartdaily-dush.spru.site/f/order" method="POST" onsubmit="submitOrder(event)">
       <div class="form-field">
         <label class="form-label">Оберіть модель</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
-          <label id="formModelBase" onclick="selectFormModel('cheap')" style="cursor:pointer;border:2px solid rgba(255,255,255,.15);border-radius:14px;padding:20px 12px;text-align:center;background:rgba(255,255,255,.06);transition:all .3s;">
-            <div id="formBaseTitle" style="font-weight:900;font-size:20px;letter-spacing:1px;color:rgba(255,255,255,.4);">BASE</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px;">
+          <label id="formModelBase" onclick="selectFormModel('cheap')" style="cursor:pointer;border:2px solid rgba(255,255,255,.15);border-radius:14px;padding:20px 8px;text-align:center;background:rgba(255,255,255,.06);transition:all .3s;">
+            <div id="formBaseTitle" style="font-weight:900;font-size:18px;letter-spacing:1px;color:rgba(255,255,255,.4);">BASE</div>
             <div id="formBasePrice" style="font-size:13px;color:rgba(255,255,255,.3);margin-top:6px;font-weight:700;">₴499</div>
           </label>
-          <label id="formModelPro" onclick="selectFormModel('premium')" style="cursor:pointer;border:2px solid #FA6400;border-radius:14px;padding:20px 12px;text-align:center;background:#FA6400;transition:all .3s;">
-            <div id="formProTitle" style="font-weight:900;font-size:20px;letter-spacing:1px;color:#fff;">PRO</div>
+          <label id="formModelPro" onclick="selectFormModel('premium')" style="cursor:pointer;border:2px solid #FA6400;border-radius:14px;padding:20px 8px;text-align:center;background:#FA6400;transition:all .3s;">
+            <div id="formProTitle" style="font-weight:900;font-size:18px;letter-spacing:1px;color:#fff;">PRO</div>
             <div id="formProPrice" style="font-size:13px;color:rgba(255,255,255,.85);margin-top:6px;font-weight:700;">₴899</div>
           </label>
+          <label id="formModelUltra" onclick="selectFormModel('ultra')" style="cursor:pointer;border:2px solid rgba(255,255,255,.15);border-radius:14px;padding:20px 8px;text-align:center;background:rgba(255,255,255,.06);transition:all .3s;">
+            <div id="formUltraTitle" style="font-weight:900;font-size:18px;letter-spacing:1px;color:rgba(255,255,255,.4);">ULTRA</div>
+            <div id="formUltraPrice" style="font-size:13px;color:rgba(255,255,255,.3);margin-top:6px;font-weight:700;">₴1090</div>
+          </label>
         </div>
-        <input type="hidden" id="selectedModel" value="Pro — ₴899">
+        <input type="hidden" id="selectedModel" name="model" value="Pro — ₴899">
       </div>
 
       <div class="form-field">
         <label class="form-label" for="nameField">Ім'я та прізвище</label>
-        <input class="form-input" id="nameField" type="text" placeholder="Наприклад: Іван Коваленко" required>
+        <input class="form-input" id="nameField" name="name" type="text" placeholder="Наприклад: Іван Коваленко" required>
       </div>
 
       <div class="form-field">
         <label class="form-label" for="phoneField">Номер телефону</label>
-        <input class="form-input" id="phoneField" type="tel" placeholder="+380 XX XXX XX XX" required>
+        <input class="form-input" id="phoneField" name="phone" type="tel" placeholder="+380 XX XXX XX XX" required>
       </div>
+
+      <label class="consent-row" for="consentField">
+        <input type="checkbox" id="consentField" name="consent" required>
+        <span>Погоджуюсь з обробкою даних та <a href="privacy.html" target="_blank" rel="noopener">політикою конфіденціальності</a></span>
+      </label>
 
       <button type="submit" class="form-submit pulse">Замовити зараз</button>
 
@@ -671,7 +713,7 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
       <div class="review-card-num" id="reviewCardNum">ВІДГУК 01</div>
       
       <div class="review-header">
-        <img class="review-card-img" id="reviewCardImg" src="" alt="">
+        <img class="review-card-img" id="reviewCardImg" src="assets/avatar.svg" alt="">
         <div class="review-user-info">
           <div class="review-user-name" id="reviewCardName"></div>
           <div class="review-user-city" id="reviewCardCity"></div>
@@ -703,8 +745,9 @@ footer { background: #080808; padding: 32px 20px; text-align: center; border-top
   <div class="footer-logo">SmartDaily</div>
   <div class="footer-contact"><a href="tel:+380756835255">☎️ +380 75 683 5255</a></div>
   <div class="footer-links">
-    <a href="#" onclick="showModal('privacy')">📋 Політика конфіденціальності</a>
-    <a href="#" onclick="showModal('returns')">↩️ Повернення і обмін</a>
+    <a href="privacy.html">📋 Політика конфіденціальності</a>
+    <button type="button" onclick="showModal('privacy')">📄 Швидкий перегляд політики</button>
+    <button type="button" onclick="showModal('returns')">↩️ Повернення і обмін</button>
   </div>
   <div class="footer-text">© 2025 SmartDaily · Всі права захищені</div>
 </footer>
@@ -800,32 +843,35 @@ function closeModal() {
 function selectFormModel(product) {
   const baseEl = document.getElementById('formModelBase');
   const proEl = document.getElementById('formModelPro');
+  const ultraEl = document.getElementById('formModelUltra');
   const baseTitle = document.getElementById('formBaseTitle');
   const basePrice = document.getElementById('formBasePrice');
   const proTitle = document.getElementById('formProTitle');
   const proPrice = document.getElementById('formProPrice');
+  const ultraTitle = document.getElementById('formUltraTitle');
+  const ultraPrice = document.getElementById('formUltraPrice');
   const modelInput = document.getElementById('selectedModel');
-  if (product === 'cheap') {
-    baseEl.style.borderColor = '#2196F3';
-    baseEl.style.background = '#2196F3';
-    baseTitle.style.color = '#fff';
-    basePrice.style.color = 'rgba(255,255,255,.85)';
-    proEl.style.borderColor = 'rgba(255,255,255,.15)';
-    proEl.style.background = 'rgba(255,255,255,.06)';
-    proTitle.style.color = 'rgba(255,255,255,.4)';
-    proPrice.style.color = 'rgba(255,255,255,.3)';
-    modelInput.value = 'Base — ₴499';
-  } else {
-    proEl.style.borderColor = '#FA6400';
-    proEl.style.background = '#FA6400';
-    proTitle.style.color = '#fff';
-    proPrice.style.color = 'rgba(255,255,255,.85)';
-    baseEl.style.borderColor = 'rgba(255,255,255,.15)';
-    baseEl.style.background = 'rgba(255,255,255,.06)';
-    baseTitle.style.color = 'rgba(255,255,255,.4)';
-    basePrice.style.color = 'rgba(255,255,255,.3)';
-    modelInput.value = 'Pro — ₴899';
-  }
+  const RESET = { borderColor: 'rgba(255,255,255,.15)', background: 'rgba(255,255,255,.06)', title: 'rgba(255,255,255,.4)', price: 'rgba(255,255,255,.3)' };
+  const set = (el, tEl, pEl, on, color) => {
+    if (!el) return;
+    if (on) {
+      el.style.borderColor = color;
+      el.style.background = color;
+      tEl.style.color = '#fff';
+      pEl.style.color = 'rgba(255,255,255,.85)';
+    } else {
+      el.style.borderColor = RESET.borderColor;
+      el.style.background = RESET.background;
+      tEl.style.color = RESET.title;
+      pEl.style.color = RESET.price;
+    }
+  };
+  set(baseEl, baseTitle, basePrice, product === 'cheap', '#2196F3');
+  set(proEl, proTitle, proPrice, product === 'premium', '#FA6400');
+  set(ultraEl, ultraTitle, ultraPrice, product === 'ultra', '#7C3AED');
+  if (product === 'cheap') modelInput.value = 'Base — ₴499';
+  else if (product === 'ultra') modelInput.value = 'Ultra — ₴1090';
+  else modelInput.value = 'Pro — ₴899';
 }
 
 /* ── SCROLL TO FORM ── */
@@ -1040,6 +1086,20 @@ const PRODUCTS = {
   }
 };
 
+/* ── ULTRA: та сама база, що й Pro, але 250 хв і 3 режими ── */
+PRODUCTS.ultra = JSON.parse(JSON.stringify(PRODUCTS.premium));
+PRODUCTS.ultra.color = '#7C3AED';
+PRODUCTS.ultra.name = 'Портативний електричний душ USB ULTRA';
+PRODUCTS.ultra.price = 1090;
+PRODUCTS.ultra.oldPrice = 1499;
+PRODUCTS.ultra.specs = PRODUCTS.ultra.specs.map(s =>
+  s.label === 'Час роботи' ? { ...s, value: '~250 хвилин' } : s
+);
+PRODUCTS.ultra.faq = PRODUCTS.ultra.faq.map(f => ({
+  ...f,
+  a: String(f.a).replace('190 хвилин', '250 хвилин')
+}));
+
 let currentProduct = 'premium';
 
 function updateColorTheme(color) {
@@ -1060,23 +1120,21 @@ function switchProduct(product) {
 
   const cardCheap = document.getElementById('cardCheap')?.querySelector('div');
   const cardPremium = document.getElementById('cardPremium')?.querySelector('div');
-  if (cardCheap && cardPremium) {
-    if (product === 'cheap') {
-      cardCheap.style.borderColor = '#2196F3';
-      cardCheap.style.background = 'linear-gradient(135deg, rgba(33,150,243,.05), rgba(33,150,243,.02))';
-      cardCheap.style.boxShadow = '0 8px 24px rgba(0,0,0,.12)';
-      cardPremium.style.borderColor = 'rgba(0,0,0,.1)';
-      cardPremium.style.background = '#fff';
-      cardPremium.style.boxShadow = 'none';
+  const cardUltra = document.getElementById('cardUltra')?.querySelector('div');
+  const CARD_COLORS = { cheap: '#2196F3', premium: '#FA6400', ultra: '#7C3AED' };
+  [['cheap', cardCheap], ['premium', cardPremium], ['ultra', cardUltra]].forEach(([key, el]) => {
+    if (!el) return;
+    if (key === product) {
+      const c = CARD_COLORS[key];
+      el.style.borderColor = c;
+      el.style.background = `linear-gradient(135deg, ${c}0D, ${c}05)`;
+      el.style.boxShadow = '0 8px 24px rgba(0,0,0,.12)';
     } else {
-      cardPremium.style.borderColor = '#FA6400';
-      cardPremium.style.background = 'linear-gradient(135deg, rgba(250,100,0,.05), rgba(250,100,0,.02))';
-      cardPremium.style.boxShadow = '0 8px 24px rgba(0,0,0,.12)';
-      cardCheap.style.borderColor = 'rgba(0,0,0,.1)';
-      cardCheap.style.background = '#fff';
-      cardCheap.style.boxShadow = 'none';
+      el.style.borderColor = 'rgba(0,0,0,.1)';
+      el.style.background = '#fff';
+      el.style.boxShadow = 'none';
     }
-  }
+  });
 
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) heroBg.style.backgroundImage = `url('${data.images.hero}')`;
@@ -1165,47 +1223,51 @@ function submitOrder(event) {
   const name = nameField.value.trim();
   const phone = phoneField.value.trim();
   if (!name || !phone) { alert('Заповніть всі обов\'язкові поля!'); return; }
-
   submitBtn.disabled = true;
   submitBtn.textContent = 'Відправляємо...';
-
+  const formEl = document.getElementById('orderFormElement');
   const model = document.getElementById('selectedModel')?.value || 'не вказано';
-  const price = currentProduct === 'premium' ? 899 : 499;
-
-  // The bot token is kept on the Vercel server, never in this public HTML.
-  fetch('/api/order', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name,
-      phone,
-      model,
-      price,
-      site: 'SmartDaily — Портативний душ'
-    })
-  })
-  .then(async response => {
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok || !data.ok) {
-      throw new Error(data.error || data.description || 'Не вдалося відправити замовлення');
-    }
+  const payload = new URLSearchParams(new FormData(formEl));
+  payload.set('model', model);
+  payload.set('name', name);
+  payload.set('phone', phone);
+  payload.set('ordered_at', new Date().toLocaleString('uk-UA'));
+  const ORDER_API = 'https://smartdaily-orders.spru.run/order';
+  fetch(ORDER_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, phone: phone, model: model, page: window.location.href }) })
+  .then(async r => {
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok || data.ok === false) throw new Error(data.description || 'Помилка відправки');
     return data;
   })
-  .then(() => {
-    if (typeof fbq === 'function') fbq('track', 'Purchase', { value: price, currency: 'UAH' });
-    submitBtn.textContent = '✅ Замовлення отримано!';
-    submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-    const successDiv = document.getElementById('orderSuccess');
-    if (successDiv) successDiv.style.display = 'block';
-    document.getElementById('orderFormElement').style.display = 'none';
-    setTimeout(() => {
-      document.getElementById('orderFormElement').reset();
-      document.getElementById('orderFormElement').style.display = 'block';
-      if (successDiv) successDiv.style.display = 'none';
-      submitBtn.textContent = 'Замовити зараз';
-      submitBtn.style.background = '';
-      submitBtn.disabled = false;
-    }, 4000);
+  .catch(() => {
+    // запасной канал: заявка уходит в форму сайта, если бот недоступен
+    return fetch(formEl.action, { method: 'POST', body: payload })
+      .then(async r => {
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error('Помилка відправки');
+        return data;
+      });
+  })
+  .then(data => {
+    if (data.ok !== false) {
+      const price = (PRODUCTS[currentProduct] && PRODUCTS[currentProduct].price) || 899;
+      if (typeof fbq === 'function') fbq('track', 'Purchase', { value: price, currency: 'UAH' });
+      submitBtn.textContent = '✅ Замовлення отримано!';
+      submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+      const successDiv = document.getElementById('orderSuccess');
+      if (successDiv) successDiv.style.display = 'block';
+      document.getElementById('orderFormElement').style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('orderFormElement').reset();
+        document.getElementById('orderFormElement').style.display = 'block';
+        if (successDiv) successDiv.style.display = 'none';
+        submitBtn.textContent = 'Замовити зараз';
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 4000);
+    } else {
+      throw new Error(data.description || 'Невідома помилка');
+    }
   })
   .catch(error => {
     submitBtn.textContent = 'Замовити зараз';
